@@ -1,0 +1,560 @@
+<?xml version='1.0' encoding='utf-8'?>
+<model>
+  <materials>
+    <material id="2" name="W">
+      <density units="g/cm3" value="19.3"/>
+      <nuclide name="O16" wo="4.9867343640471626e-06"/>
+      <nuclide name="O17" wo="2.013422187128455e-09"/>
+      <nuclide name="O18" wo="1.1252213765709005e-08"/>
+      <nuclide name="N14" wo="4.980386066546478e-06"/>
+      <nuclide name="N15" wo="1.9613933453521717e-08"/>
+      <nuclide name="C12" wo="4.940034225428434e-06"/>
+      <nuclide name="C13" wo="5.996577457156737e-08"/>
+      <nuclide name="Na23" wo="4e-06"/>
+      <nuclide name="K39" wo="2.323426562855303e-06"/>
+      <nuclide name="K40" wo="2.9897640541007784e-10"/>
+      <nuclide name="K41" wo="1.762744607392869e-07"/>
+      <nuclide name="Al27" wo="3e-06"/>
+      <nuclide name="Ca40" wo="4.833089656493453e-07"/>
+      <nuclide name="Ca42" wo="3.386797053943769e-09"/>
+      <nuclide name="Ca43" wo="7.235179158319261e-10"/>
+      <nuclide name="Ca44" wo="1.1439079160475057e-08"/>
+      <nuclide name="Ca46" wo="2.2932113344795433e-11"/>
+      <nuclide name="Ca48" wo="1.118708107059158e-09"/>
+      <nuclide name="Cr50" wo="2.0868433113591563e-08"/>
+      <nuclide name="Cr52" wo="4.1849681175672946e-07"/>
+      <nuclide name="Cr53" wo="4.836793409337592e-08"/>
+      <nuclide name="Cr54" wo="1.226682103630307e-08"/>
+      <nuclide name="Cu63" wo="3.4239597602619503e-07"/>
+      <nuclide name="Cu65" wo="1.5760402397380497e-07"/>
+      <nuclide name="Fe54" wo="2.822779111353428e-07"/>
+      <nuclide name="Fe56" wo="4.595076438978123e-06"/>
+      <nuclide name="Fe57" wo="1.0801843068373183e-07"/>
+      <nuclide name="Fe58" wo="1.4627219202802942e-08"/>
+      <nuclide name="W180" wo="0.0011745391195513418"/>
+      <nuclide name="W182" wo="0.2622623643775356"/>
+      <nuclide name="W183" wo="0.1424016106976854"/>
+      <nuclide name="W184" wo="0.30657241683428393"/>
+      <nuclide name="W186" wo="0.28755806897094377"/>
+    </material>
+    <material id="12">
+      <density units="g/cm3" value="11.342"/>
+      <nuclide ao="0.014" name="Pb204"/>
+      <nuclide ao="0.241" name="Pb206"/>
+      <nuclide ao="0.221" name="Pb207"/>
+      <nuclide ao="0.524" name="Pb208"/>
+    </material>
+    <material depletable="true" id="24" name="doped flibe channels" volume="4688229.0">
+      <density units="g/cm3" value="2.0238854294097623"/>
+      <nuclide ao="5.0053891401646965e-05" name="Pb204"/>
+      <nuclide ao="0.0008616419876997798" name="Pb206"/>
+      <nuclide ao="0.00079013642855457" name="Pb207"/>
+      <nuclide ao="0.0018734456496045007" name="Pb208"/>
+      <nuclide ao="0.569385555452994" name="F19"/>
+      <nuclide ao="0.02135195832948727" name="Li6"/>
+      <nuclide ao="0.26334081939700976" name="Li7"/>
+      <nuclide ao="0.1423463888632485" name="Be9"/>
+    </material>
+    <material depletable="true" id="25" name="doped flibe blanket" volume="336962565.3333333">
+      <density units="g/cm3" value="2.0238854294097623"/>
+      <nuclide ao="5.0053891401646965e-05" name="Pb204"/>
+      <nuclide ao="0.0008616419876997798" name="Pb206"/>
+      <nuclide ao="0.00079013642855457" name="Pb207"/>
+      <nuclide ao="0.0018734456496045007" name="Pb208"/>
+      <nuclide ao="0.569385555452994" name="F19"/>
+      <nuclide ao="0.02135195832948727" name="Li6"/>
+      <nuclide ao="0.26334081939700976" name="Li7"/>
+      <nuclide ao="0.1423463888632485" name="Be9"/>
+    </material>
+    <material id="26" name="tank outer">
+      <density units="g/cm3" value="6.05"/>
+      <nuclide name="Cr50" wo="0.0016694746490873253"/>
+      <nuclide name="Cr52" wo="0.03347974494053836"/>
+      <nuclide name="Cr53" wo="0.0038694347274700735"/>
+      <nuclide name="Cr54" wo="0.0009813456829042457"/>
+      <nuclide name="Ti46" wo="0.0031680380863104225"/>
+      <nuclide name="Ti47" wo="0.002919112929278088"/>
+      <nuclide name="Ti48" wo="0.029538020902329386"/>
+      <nuclide name="Ti49" wo="0.0022128762152676786"/>
+      <nuclide name="Ti50" wo="0.0021619518668144254"/>
+      <nuclide name="C12" wo="5.532838332479845e-05"/>
+      <nuclide name="C13" wo="6.716166752015545e-07"/>
+      <nuclide name="O16" wo="0.00018051978397850727"/>
+      <nuclide name="O17" wo="7.288588317405006e-08"/>
+      <nuclide name="O18" wo="4.07330138318666e-07"/>
+      <nuclide name="N14" wo="0.00010259595297085743"/>
+      <nuclide name="N15" wo="4.0404702914254727e-07"/>
+      <nuclide name="B10" wo="1.2848847112551281e-06"/>
+      <nuclide name="B11" wo="5.715115288744871e-06"/>
+      <nuclide name="Na23" wo="1.7e-05"/>
+      <nuclide name="Mg24" wo="3.8954820849721496e-07"/>
+      <nuclide name="Mg25" wo="5.150207440399115e-08"/>
+      <nuclide name="Mg26" wo="5.8949717098793854e-08"/>
+      <nuclide name="Al27" wo="0.000119"/>
+      <nuclide name="Si28" wo="0.00025724584839194293"/>
+      <nuclide name="Si29" wo="1.3528900819801907e-05"/>
+      <nuclide name="Si30" wo="9.225250788255157e-06"/>
+      <nuclide name="Mn55" wo="5e-07"/>
+      <nuclide name="Fe54" wo="4.516446578165485e-06"/>
+      <nuclide name="Fe56" wo="7.352122302364997e-05"/>
+      <nuclide name="Fe57" wo="1.7282948909397093e-06"/>
+      <nuclide name="Fe58" wo="2.3403550724484708e-07"/>
+      <nuclide name="Ni58" wo="8.735701688556686e-06"/>
+      <nuclide name="Ni60" wo="3.4808751768998426e-06"/>
+      <nuclide name="Ni61" wo="1.5383668108857231e-07"/>
+      <nuclide name="Ni62" wo="4.985268994533321e-07"/>
+      <nuclide name="Ni64" wo="1.3105955400156707e-07"/>
+      <nuclide name="Cu63" wo="2.7391678082095603e-06"/>
+      <nuclide name="Cu65" wo="1.2608321917904398e-06"/>
+      <nuclide name="V50" wo="0.0022529966034759924"/>
+      <nuclide name="V51" wo="0.9168860033965239"/>
+    </material>
+    <material id="27" name="VV">
+      <density units="g/cm3" value="6.05"/>
+      <nuclide name="Cr50" wo="0.0016694746490873253"/>
+      <nuclide name="Cr52" wo="0.03347974494053836"/>
+      <nuclide name="Cr53" wo="0.0038694347274700735"/>
+      <nuclide name="Cr54" wo="0.0009813456829042457"/>
+      <nuclide name="Ti46" wo="0.0031680380863104225"/>
+      <nuclide name="Ti47" wo="0.002919112929278088"/>
+      <nuclide name="Ti48" wo="0.029538020902329386"/>
+      <nuclide name="Ti49" wo="0.0022128762152676786"/>
+      <nuclide name="Ti50" wo="0.0021619518668144254"/>
+      <nuclide name="C12" wo="5.532838332479845e-05"/>
+      <nuclide name="C13" wo="6.716166752015545e-07"/>
+      <nuclide name="O16" wo="0.00018051978397850727"/>
+      <nuclide name="O17" wo="7.288588317405006e-08"/>
+      <nuclide name="O18" wo="4.07330138318666e-07"/>
+      <nuclide name="N14" wo="0.00010259595297085743"/>
+      <nuclide name="N15" wo="4.0404702914254727e-07"/>
+      <nuclide name="B10" wo="1.2848847112551281e-06"/>
+      <nuclide name="B11" wo="5.715115288744871e-06"/>
+      <nuclide name="Na23" wo="1.7e-05"/>
+      <nuclide name="Mg24" wo="3.8954820849721496e-07"/>
+      <nuclide name="Mg25" wo="5.150207440399115e-08"/>
+      <nuclide name="Mg26" wo="5.8949717098793854e-08"/>
+      <nuclide name="Al27" wo="0.000119"/>
+      <nuclide name="Si28" wo="0.00025724584839194293"/>
+      <nuclide name="Si29" wo="1.3528900819801907e-05"/>
+      <nuclide name="Si30" wo="9.225250788255157e-06"/>
+      <nuclide name="Mn55" wo="5e-07"/>
+      <nuclide name="Fe54" wo="4.516446578165485e-06"/>
+      <nuclide name="Fe56" wo="7.352122302364997e-05"/>
+      <nuclide name="Fe57" wo="1.7282948909397093e-06"/>
+      <nuclide name="Fe58" wo="2.3403550724484708e-07"/>
+      <nuclide name="Ni58" wo="8.735701688556686e-06"/>
+      <nuclide name="Ni60" wo="3.4808751768998426e-06"/>
+      <nuclide name="Ni61" wo="1.5383668108857231e-07"/>
+      <nuclide name="Ni62" wo="4.985268994533321e-07"/>
+      <nuclide name="Ni64" wo="1.3105955400156707e-07"/>
+      <nuclide name="Cu63" wo="2.7391678082095603e-06"/>
+      <nuclide name="Cu65" wo="1.2608321917904398e-06"/>
+      <nuclide name="V50" wo="0.0022529966034759924"/>
+      <nuclide name="V51" wo="0.9168860033965239"/>
+    </material>
+    <material id="28" name="tank inner">
+      <density units="g/cm3" value="6.05"/>
+      <nuclide name="Cr50" wo="0.0016694746490873253"/>
+      <nuclide name="Cr52" wo="0.03347974494053836"/>
+      <nuclide name="Cr53" wo="0.0038694347274700735"/>
+      <nuclide name="Cr54" wo="0.0009813456829042457"/>
+      <nuclide name="Ti46" wo="0.0031680380863104225"/>
+      <nuclide name="Ti47" wo="0.002919112929278088"/>
+      <nuclide name="Ti48" wo="0.029538020902329386"/>
+      <nuclide name="Ti49" wo="0.0022128762152676786"/>
+      <nuclide name="Ti50" wo="0.0021619518668144254"/>
+      <nuclide name="C12" wo="5.532838332479845e-05"/>
+      <nuclide name="C13" wo="6.716166752015545e-07"/>
+      <nuclide name="O16" wo="0.00018051978397850727"/>
+      <nuclide name="O17" wo="7.288588317405006e-08"/>
+      <nuclide name="O18" wo="4.07330138318666e-07"/>
+      <nuclide name="N14" wo="0.00010259595297085743"/>
+      <nuclide name="N15" wo="4.0404702914254727e-07"/>
+      <nuclide name="B10" wo="1.2848847112551281e-06"/>
+      <nuclide name="B11" wo="5.715115288744871e-06"/>
+      <nuclide name="Na23" wo="1.7e-05"/>
+      <nuclide name="Mg24" wo="3.8954820849721496e-07"/>
+      <nuclide name="Mg25" wo="5.150207440399115e-08"/>
+      <nuclide name="Mg26" wo="5.8949717098793854e-08"/>
+      <nuclide name="Al27" wo="0.000119"/>
+      <nuclide name="Si28" wo="0.00025724584839194293"/>
+      <nuclide name="Si29" wo="1.3528900819801907e-05"/>
+      <nuclide name="Si30" wo="9.225250788255157e-06"/>
+      <nuclide name="Mn55" wo="5e-07"/>
+      <nuclide name="Fe54" wo="4.516446578165485e-06"/>
+      <nuclide name="Fe56" wo="7.352122302364997e-05"/>
+      <nuclide name="Fe57" wo="1.7282948909397093e-06"/>
+      <nuclide name="Fe58" wo="2.3403550724484708e-07"/>
+      <nuclide name="Ni58" wo="8.735701688556686e-06"/>
+      <nuclide name="Ni60" wo="3.4808751768998426e-06"/>
+      <nuclide name="Ni61" wo="1.5383668108857231e-07"/>
+      <nuclide name="Ni62" wo="4.985268994533321e-07"/>
+      <nuclide name="Ni64" wo="1.3105955400156707e-07"/>
+      <nuclide name="Cu63" wo="2.7391678082095603e-06"/>
+      <nuclide name="Cu65" wo="1.2608321917904398e-06"/>
+      <nuclide name="V50" wo="0.0022529966034759924"/>
+      <nuclide name="V51" wo="0.9168860033965239"/>
+    </material>
+  </materials>
+  <geometry>
+    <cell id="13" material="void" name="domain" region="-335 ~((((632 -633) | 633) ((634 -635) | 635) ((636 -637) | 637) (-638 639) (-640 641) (-642 643) ((644 645) | -645) ((646 647) | -647) ((648 649) | -649) ((650 651) | -651) (-652 -653) (-654 -655) (-656 -657) 658 ((659 -660) | 660) (-661 662) (-663 664) (-665 -666) (-667 -668)))" universe="2"/>
+    <cell id="14" material="void" name="plasma" region="(((336 -337) | 337) ((338 -339) | 339) ((340 -341) | 341) (-342 343) (-344 345) (-346 347) ((348 349) | -349) ((350 351) | -351) ((352 353) | -353) ((354 355) | -355) (-356 -357) (-358 -359) (-360 -361) 362 ((363 -364) | 364) (-365 366) (-367 368) (-369 -370) (-371 -372))" universe="2"/>
+    <cell id="15" material="2" name="PFC" region="~((((336 -337) | 337) ((338 -339) | 339) ((340 -341) | 341) (-342 343) (-344 345) (-346 347) ((348 349) | -349) ((350 351) | -351) ((352 353) | -353) ((354 355) | -355) (-356 -357) (-358 -359) (-360 -361) 362 ((363 -364) | 364) (-365 366) (-367 368) (-369 -370) (-371 -372))) ((((373 -374) | 374) ((375 -376) | 376) ((377 -378) | 378) (-379 380) (-381 382) (-383 384) ((385 386) | -386) ((387 388) | -388) ((389 390) | -390) ((391 392) | -392) (-393 -394) (-395 -396) (-397 -398) 399 ((400 -401) | 401) (-402 403) (-404 405) (-406 -407) (-408 -409)))" universe="2"/>
+    <cell id="16" material="26" name="VV" region="~((((373 -374) | 374) ((375 -376) | 376) ((377 -378) | 378) (-379 380) (-381 382) (-383 384) ((385 386) | -386) ((387 388) | -388) ((389 390) | -390) ((391 392) | -392) (-393 -394) (-395 -396) (-397 -398) 399 ((400 -401) | 401) (-402 403) (-404 405) (-406 -407) (-408 -409))) ((((410 -411) | 411) ((412 -413) | 413) ((414 -415) | 415) (-416 417) (-418 419) (-420 421) ((422 423) | -423) ((424 425) | -425) ((426 427) | -427) ((428 429) | -429) (-430 -431) (-432 -433) (-434 -435) 436 ((437 -438) | 438) (-439 440) (-441 442) (-443 -444) (-445 -446)))" universe="2"/>
+    <cell id="17" material="24" name="channel" region="~((((410 -411) | 411) ((412 -413) | 413) ((414 -415) | 415) (-416 417) (-418 419) (-420 421) ((422 423) | -423) ((424 425) | -425) ((426 427) | -427) ((428 429) | -429) (-430 -431) (-432 -433) (-434 -435) 436 ((437 -438) | 438) (-439 440) (-441 442) (-443 -444) (-445 -446))) ((((447 -448) | 448) ((449 -450) | 450) ((451 -452) | 452) (-453 454) (-455 456) (-457 458) ((459 460) | -460) ((461 462) | -462) ((463 464) | -464) ((465 466) | -466) (-467 -468) (-469 -470) (-471 -472) 473 ((474 -475) | 475) (-476 477) (-478 479) (-480 -481) (-482 -483)))" universe="2"/>
+    <cell id="18" material="12" name="multiplier" region="~((((447 -448) | 448) ((449 -450) | 450) ((451 -452) | 452) (-453 454) (-455 456) (-457 458) ((459 460) | -460) ((461 462) | -462) ((463 464) | -464) ((465 466) | -466) (-467 -468) (-469 -470) (-471 -472) 473 ((474 -475) | 475) (-476 477) (-478 479) (-480 -481) (-482 -483))) ((((484 -485) | 485) ((486 -487) | 487) ((488 -489) | 489) (-490 491) (-492 493) (-494 495) ((496 497) | -497) ((498 499) | -499) ((500 501) | -501) ((502 503) | -503) (-504 -505) (-506 -507) (-508 -509) 510 ((511 -512) | 512) (-513 514) (-515 516) (-517 -518) (-519 -520)))" universe="2"/>
+    <cell id="19" material="27" name="tank inner" region="~((((484 -485) | 485) ((486 -487) | 487) ((488 -489) | 489) (-490 491) (-492 493) (-494 495) ((496 497) | -497) ((498 499) | -499) ((500 501) | -501) ((502 503) | -503) (-504 -505) (-506 -507) (-508 -509) 510 ((511 -512) | 512) (-513 514) (-515 516) (-517 -518) (-519 -520))) ((((521 -522) | 522) ((523 -524) | 524) ((525 -526) | 526) (-527 528) (-529 530) (-531 532) ((533 534) | -534) ((535 536) | -536) ((537 538) | -538) ((539 540) | -540) (-541 -542) (-543 -544) (-545 -546) 547 ((548 -549) | 549) (-550 551) (-552 553) (-554 -555) (-556 -557)))" universe="2"/>
+    <cell id="20" material="25" name="blanket" region="~((((521 -522) | 522) ((523 -524) | 524) ((525 -526) | 526) (-527 528) (-529 530) (-531 532) ((533 534) | -534) ((535 536) | -536) ((537 538) | -538) ((539 540) | -540) (-541 -542) (-543 -544) (-545 -546) 547 ((548 -549) | 549) (-550 551) (-552 553) (-554 -555) (-556 -557))) ((((558 -559) | 559) ((560 -561) | 561) ((562 -563) | 563) (-564 565) (-566 567) (-568 569) ((570 571) | -571) ((572 573) | -573) ((574 575) | -575) ((576 577) | -577) (-578 -579) (-580 -581) (-582 -583) 584 ((585 -586) | 586) (-587 588) (-589 590) (-591 -592) (-593 -594)))" universe="2"/>
+    <cell id="21" material="12" name="reflector" region="~((((558 -559) | 559) ((560 -561) | 561) ((562 -563) | 563) (-564 565) (-566 567) (-568 569) ((570 571) | -571) ((572 573) | -573) ((574 575) | -575) ((576 577) | -577) (-578 -579) (-580 -581) (-582 -583) 584 ((585 -586) | 586) (-587 588) (-589 590) (-591 -592) (-593 -594))) ((((558 -559) | 559) ((560 -561) | 561) ((562 -563) | 563) (-564 565) (-566 567) (-568 569) ((570 571) | -571) ((572 573) | -573) ((574 575) | -575) ((576 577) | -577) (-578 -579) (-580 -581) (-582 -583) 584 ((585 -586) | 586) (-587 588) (-589 590) (-591 -592) (-593 -594)))" universe="2"/>
+    <cell id="22" material="28" name="tank outer" region="~((((558 -559) | 559) ((560 -561) | 561) ((562 -563) | 563) (-564 565) (-566 567) (-568 569) ((570 571) | -571) ((572 573) | -573) ((574 575) | -575) ((576 577) | -577) (-578 -579) (-580 -581) (-582 -583) 584 ((585 -586) | 586) (-587 588) (-589 590) (-591 -592) (-593 -594))) ((((632 -633) | 633) ((634 -635) | 635) ((636 -637) | 637) (-638 639) (-640 641) (-642 643) ((644 645) | -645) ((646 647) | -647) ((648 649) | -649) ((650 651) | -651) (-652 -653) (-654 -655) (-656 -657) 658 ((659 -660) | 660) (-661 662) (-663 664) (-665 -666) (-667 -668)))" universe="2"/>
+    <surface boundary="vacuum" coeffs="0.0 0.0 0.0 1000" id="335" type="sphere"/>
+    <surface coeffs="0.0 0.0 1487.630076025537 0.03257865187466382" id="336" type="z-cone"/>
+    <surface coeffs="1487.630076025537" id="337" type="z-plane"/>
+    <surface coeffs="0.0 0.0 7.86561997427115 3.1842709620084637" id="338" type="z-cone"/>
+    <surface coeffs="7.86561997427115" id="339" type="z-plane"/>
+    <surface coeffs="0.0 0.0 468.5150083366703 0.23676941853517536" id="340" type="z-cone"/>
+    <surface coeffs="468.5150083366703" id="341" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -2126.42975164074 0.05980047136614862" id="342" type="z-cone"/>
+    <surface coeffs="-2126.42975164074" id="343" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -757.0614080837842 0.5239893416332259" id="344" type="z-cone"/>
+    <surface coeffs="-757.0614080837842" id="345" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -495.01200727912993 1.4817521646138412" id="346" type="z-cone"/>
+    <surface coeffs="-495.01200727912993" id="347" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -4384.555485487715 0.004035501989302729" id="348" type="z-cone"/>
+    <surface coeffs="-4384.555485487715" id="349" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -1487.630076025528 0.032578651874664195" id="350" type="z-cone"/>
+    <surface coeffs="-1487.630076025528" id="351" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -7.86561997427115 3.1842709620084637" id="352" type="z-cone"/>
+    <surface coeffs="-7.86561997427115" id="353" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -468.51500833666995 0.23676941853517575" id="354" type="z-cone"/>
+    <surface coeffs="-468.51500833666995" id="355" type="z-plane"/>
+    <surface coeffs="0.0 0.0 2126.429751640738 0.05980047136614872" id="356" type="z-cone"/>
+    <surface coeffs="2126.429751640738" id="357" type="z-plane"/>
+    <surface coeffs="0.0 0.0 757.0614080837842 0.5239893416332257" id="358" type="z-cone"/>
+    <surface coeffs="757.0614080837842" id="359" type="z-plane"/>
+    <surface coeffs="0.0 0.0 495.0120072791298 1.4817521646138418" id="360" type="z-cone"/>
+    <surface coeffs="495.0120072791298" id="361" type="z-plane"/>
+    <surface coeffs="0.0 0.0 280.4135972212963" id="362" type="z-cylinder"/>
+    <surface coeffs="0.0 0.0 4384.555485487714 0.004035501989302729" id="363" type="z-cone"/>
+    <surface coeffs="4384.555485487714" id="364" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -222.72792956671236 59.43266055069213" id="365" type="z-cone"/>
+    <surface coeffs="-222.72792956671236" id="366" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -361.7344479615069 3.9441844475849788" id="367" type="z-cone"/>
+    <surface coeffs="-361.7344479615069" id="368" type="z-plane"/>
+    <surface coeffs="0.0 0.0 222.72792956671321 59.43266055069004" id="369" type="z-cone"/>
+    <surface coeffs="222.72792956671321" id="370" type="z-plane"/>
+    <surface coeffs="0.0 0.0 361.7344479615073 3.9441844475849606" id="371" type="z-cone"/>
+    <surface coeffs="361.7344479615073" id="372" type="z-plane"/>
+    <surface coeffs="0.0 0.0 1485.9411280540514 0.03257865187466393" id="373" type="z-cone"/>
+    <surface coeffs="1485.9411280540514" id="374" type="z-plane"/>
+    <surface coeffs="0.0 0.0 7.521724748415817 3.184270962008463" id="375" type="z-cone"/>
+    <surface coeffs="7.521724748415817" id="376" type="z-plane"/>
+    <surface coeffs="0.0 0.0 467.829357800596 0.2367694185351754" id="377" type="z-cone"/>
+    <surface coeffs="467.829357800596" id="378" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -2127.6926866586196 0.059800471366148744" id="379" type="z-cone"/>
+    <surface coeffs="-2127.6926866586196" id="380" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -757.5730321829449 0.5239893416332244" id="381" type="z-cone"/>
+    <surface coeffs="-757.5730321829449" id="382" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -495.40025836068355 1.4817521646138407" id="383" type="z-cone"/>
+    <surface coeffs="-495.40025836068355" id="384" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -4379.823460747432 0.004035501989302736" id="385" type="z-cone"/>
+    <surface coeffs="-4379.823460747432" id="386" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -1485.9411280540428 0.03257865187466431" id="387" type="z-cone"/>
+    <surface coeffs="-1485.9411280540428" id="388" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -7.521724748415785 3.184270962008463" id="389" type="z-cone"/>
+    <surface coeffs="-7.521724748415785" id="390" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -467.82935780059546 0.2367694185351758" id="391" type="z-cone"/>
+    <surface coeffs="-467.82935780059546" id="392" type="z-plane"/>
+    <surface coeffs="0.0 0.0 2127.6926866586177 0.05980047136614885" id="393" type="z-cone"/>
+    <surface coeffs="2127.6926866586177" id="394" type="z-plane"/>
+    <surface coeffs="0.0 0.0 757.5730321829449 0.5239893416332243" id="395" type="z-cone"/>
+    <surface coeffs="757.5730321829449" id="396" type="z-plane"/>
+    <surface coeffs="0.0 0.0 495.4002583606833 1.4817521646138418" id="397" type="z-cone"/>
+    <surface coeffs="495.4002583606833" id="398" type="z-plane"/>
+    <surface coeffs="0.0 0.0 280.1135972212963" id="399" type="z-cylinder"/>
+    <surface coeffs="0.0 0.0 4379.823460747433 0.004035501989302736" id="400" type="z-cone"/>
+    <surface coeffs="4379.823460747433" id="401" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -223.03044290341106 59.432660550692574" id="402" type="z-cone"/>
+    <surface coeffs="-223.03044290341106" id="403" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -362.0703324736188 3.944184447584984" id="404" type="z-cone"/>
+    <surface coeffs="-362.0703324736188" id="405" type="z-plane"/>
+    <surface coeffs="0.0 0.0 223.03044290341188 59.432660550690514" id="406" type="z-cone"/>
+    <surface coeffs="223.03044290341188" id="407" type="z-plane"/>
+    <surface coeffs="0.0 0.0 362.0703324736192 3.944184447584966" id="408" type="z-cone"/>
+    <surface coeffs="362.0703324736192" id="409" type="z-plane"/>
+    <surface coeffs="0.0 0.0 1480.3113014824426 0.032578651874663925" id="410" type="z-cone"/>
+    <surface coeffs="1480.3113014824426" id="411" type="z-plane"/>
+    <surface coeffs="0.0 0.0 6.375407328897803 3.184270962008465" id="412" type="z-cone"/>
+    <surface coeffs="6.375407328897803" id="413" type="z-plane"/>
+    <surface coeffs="0.0 0.0 465.54385601368136 0.2367694185351754" id="414" type="z-cone"/>
+    <surface coeffs="465.54385601368136" id="415" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -2131.902470051558 0.05980047136614881" id="416" type="z-cone"/>
+    <surface coeffs="-2131.902470051558" id="417" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -759.2784458468109 0.5239893416332246" id="418" type="z-cone"/>
+    <surface coeffs="-759.2784458468109" id="419" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -496.69442863252857 1.4817521646138407" id="420" type="z-cone"/>
+    <surface coeffs="-496.69442863252857" id="421" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -4364.050044946516 0.004035501989302721" id="422" type="z-cone"/>
+    <surface coeffs="-4364.050044946516" id="423" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -1480.3113014824335 0.0325786518746643" id="424" type="z-cone"/>
+    <surface coeffs="-1480.3113014824335" id="425" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -6.375407328897738 3.184270962008465" id="426" type="z-cone"/>
+    <surface coeffs="-6.375407328897738" id="427" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -465.54385601368085 0.2367694185351758" id="428" type="z-cone"/>
+    <surface coeffs="-465.54385601368085" id="429" type="z-plane"/>
+    <surface coeffs="0.0 0.0 2131.902470051556 0.05980047136614891" id="430" type="z-cone"/>
+    <surface coeffs="2131.902470051556" id="431" type="z-plane"/>
+    <surface coeffs="0.0 0.0 759.278445846811 0.5239893416332245" id="432" type="z-cone"/>
+    <surface coeffs="759.278445846811" id="433" type="z-plane"/>
+    <surface coeffs="0.0 0.0 496.69442863252834 1.481752164613842" id="434" type="z-cone"/>
+    <surface coeffs="496.69442863252834" id="435" type="z-plane"/>
+    <surface coeffs="0.0 0.0 279.1135972212963" id="436" type="z-cylinder"/>
+    <surface coeffs="0.0 0.0 4364.050044946516 0.004035501989302721" id="437" type="z-cone"/>
+    <surface coeffs="4364.050044946516" id="438" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -224.03882069240728 59.43266055069233" id="439" type="z-cone"/>
+    <surface coeffs="-224.03882069240728" id="440" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -363.1899475139922 3.9441844475849828" id="441" type="z-cone"/>
+    <surface coeffs="-363.1899475139922" id="442" type="z-plane"/>
+    <surface coeffs="0.0 0.0 224.03882069240808 59.43266055069033" id="443" type="z-cone"/>
+    <surface coeffs="224.03882069240808" id="444" type="z-plane"/>
+    <surface coeffs="0.0 0.0 363.18994751399265 3.944184447584964" id="445" type="z-cone"/>
+    <surface coeffs="363.18994751399265" id="446" type="z-plane"/>
+    <surface coeffs="0.0 0.0 1469.051648339225 0.03257865187466388" id="447" type="z-cone"/>
+    <surface coeffs="1469.051648339225" id="448" type="z-plane"/>
+    <surface coeffs="0.0 0.0 4.082772489861776 3.1842709620084695" id="449" type="z-cone"/>
+    <surface coeffs="4.082772489861776" id="450" type="z-plane"/>
+    <surface coeffs="0.0 0.0 460.97285243985186 0.2367694185351757" id="451" type="z-cone"/>
+    <surface coeffs="460.97285243985186" id="452" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -2140.3220368374346 0.059800471366148945" id="453" type="z-cone"/>
+    <surface coeffs="-2140.3220368374346" id="454" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -762.6892731745431 0.5239893416332247" id="455" type="z-cone"/>
+    <surface coeffs="-762.6892731745431" id="456" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -499.2827691762186 1.4817521646138412" id="457" type="z-cone"/>
+    <surface coeffs="-499.2827691762186" id="458" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -4332.50321334468 0.004035501989302694" id="459" type="z-cone"/>
+    <surface coeffs="-4332.50321334468" id="460" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -1469.0516483392157 0.03257865187466425" id="461" type="z-cone"/>
+    <surface coeffs="-1469.0516483392157" id="462" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -4.0827724898617115 3.1842709620084695" id="463" type="z-cone"/>
+    <surface coeffs="-4.0827724898617115" id="464" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -460.972852439852 0.2367694185351757" id="465" type="z-cone"/>
+    <surface coeffs="-460.972852439852" id="466" type="z-plane"/>
+    <surface coeffs="0.0 0.0 2140.3220368374327 0.05980047136614905" id="467" type="z-cone"/>
+    <surface coeffs="2140.3220368374327" id="468" type="z-plane"/>
+    <surface coeffs="0.0 0.0 762.6892731745432 0.5239893416332246" id="469" type="z-cone"/>
+    <surface coeffs="762.6892731745432" id="470" type="z-plane"/>
+    <surface coeffs="0.0 0.0 499.28276917621844 1.481752164613842" id="471" type="z-cone"/>
+    <surface coeffs="499.28276917621844" id="472" type="z-plane"/>
+    <surface coeffs="0.0 0.0 277.1135972212963" id="473" type="z-cylinder"/>
+    <surface coeffs="0.0 0.0 4332.503213344679 0.004035501989302696" id="474" type="z-cone"/>
+    <surface coeffs="4332.503213344679" id="475" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -226.05557627039943 59.43266055069258" id="476" type="z-cone"/>
+    <surface coeffs="-226.05557627039943" id="477" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -365.42917759473903 3.9441844475849788" id="478" type="z-cone"/>
+    <surface coeffs="-365.42917759473903" id="479" type="z-plane"/>
+    <surface coeffs="0.0 0.0 226.05557627040048 59.43266055068993" id="480" type="z-cone"/>
+    <surface coeffs="226.05557627040048" id="481" type="z-plane"/>
+    <surface coeffs="0.0 0.0 365.42917759473954 3.9441844475849606" id="482" type="z-cone"/>
+    <surface coeffs="365.42917759473954" id="483" type="z-plane"/>
+    <surface coeffs="0.0 0.0 1412.7533826231347 0.032578651874663765" id="484" type="z-cone"/>
+    <surface coeffs="1412.7533826231347" id="485" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -7.380401705317638 3.1842709620084664" id="486" type="z-cone"/>
+    <surface coeffs="-7.380401705317638" id="487" type="z-plane"/>
+    <surface coeffs="0.0 0.0 438.1178345707057 0.23676941853517625" id="488" type="z-cone"/>
+    <surface coeffs="438.1178345707057" id="489" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -2182.4198707668334 0.05980047136614871" id="490" type="z-cone"/>
+    <surface coeffs="-2182.4198707668334" id="491" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -779.743409813205 0.5239893416332246" id="492" type="z-cone"/>
+    <surface coeffs="-779.743409813205" id="493" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -236.13935416036057 59.43266055069284" id="494" type="z-cone"/>
+    <surface coeffs="-236.13935416036057" id="495" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -4174.769055335432 0.004035501989302689" id="496" type="z-cone"/>
+    <surface coeffs="-4174.769055335432" id="497" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -1412.7533826231258 0.03257865187466414" id="498" type="z-cone"/>
+    <surface coeffs="-1412.7533826231258" id="499" type="z-plane"/>
+    <surface coeffs="0.0 0.0 7.380401705317703 3.1842709620084664" id="500" type="z-cone"/>
+    <surface coeffs="7.380401705317703" id="501" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -438.1178345707062 0.2367694185351758" id="502" type="z-cone"/>
+    <surface coeffs="-438.1178345707062" id="503" type="z-plane"/>
+    <surface coeffs="0.0 0.0 2182.4198707668315 0.05980047136614882" id="504" type="z-cone"/>
+    <surface coeffs="2182.4198707668315" id="505" type="z-plane"/>
+    <surface coeffs="0.0 0.0 779.743409813205 0.5239893416332244" id="506" type="z-cone"/>
+    <surface coeffs="779.743409813205" id="507" type="z-plane"/>
+    <surface coeffs="0.0 0.0 236.13935416036173 59.432660550689874" id="508" type="z-cone"/>
+    <surface coeffs="236.13935416036173" id="509" type="z-plane"/>
+    <surface coeffs="0.0 0.0 267.1135972212963" id="510" type="z-cylinder"/>
+    <surface coeffs="0.0 0.0 4174.769055335432 0.0040355019893026905" id="511" type="z-cone"/>
+    <surface coeffs="4174.769055335432" id="512" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -512.2244718946691 1.4817521646138396" id="513" type="z-cone"/>
+    <surface coeffs="-512.2244718946691" id="514" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -376.62532799847304 3.9441844475849788" id="515" type="z-cone"/>
+    <surface coeffs="-376.62532799847304" id="516" type="z-plane"/>
+    <surface coeffs="0.0 0.0 512.2244718946689 1.4817521646138407" id="517" type="z-cone"/>
+    <surface coeffs="512.2244718946689" id="518" type="z-plane"/>
+    <surface coeffs="0.0 0.0 376.62532799847344 3.944184447584961" id="519" type="z-cone"/>
+    <surface coeffs="376.62532799847344" id="520" type="z-plane"/>
+    <surface coeffs="0.0 0.0 1395.8639029083079 0.03257865187466372" id="521" type="z-cone"/>
+    <surface coeffs="1395.8639029083079" id="522" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -10.819353963871642 3.1842709620084726" id="523" type="z-cone"/>
+    <surface coeffs="-10.819353963871642" id="524" type="z-plane"/>
+    <surface coeffs="0.0 0.0 431.26132920996173 0.23676941853517647" id="525" type="z-cone"/>
+    <surface coeffs="431.26132920996173" id="526" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -2195.049220945649 0.0598004713661489" id="527" type="z-cone"/>
+    <surface coeffs="-2195.049220945649" id="528" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -784.8596508048031 0.5239893416332249" id="529" type="z-cone"/>
+    <surface coeffs="-784.8596508048031" id="530" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -239.164487527349 59.432660550692674" id="531" type="z-cone"/>
+    <surface coeffs="-239.164487527349" id="532" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -4127.4488079326775 0.004035501989302649" id="533" type="z-cone"/>
+    <surface coeffs="-4127.4488079326775" id="534" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -1395.863902908299 0.0325786518746641" id="535" type="z-cone"/>
+    <surface coeffs="-1395.863902908299" id="536" type="z-plane"/>
+    <surface coeffs="0.0 0.0 10.819353963871707 3.1842709620084726" id="537" type="z-cone"/>
+    <surface coeffs="10.819353963871707" id="538" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -431.2613292099621 0.2367694185351761" id="539" type="z-cone"/>
+    <surface coeffs="-431.2613292099621" id="540" type="z-plane"/>
+    <surface coeffs="0.0 0.0 2195.049220945647 0.05980047136614901" id="541" type="z-cone"/>
+    <surface coeffs="2195.049220945647" id="542" type="z-plane"/>
+    <surface coeffs="0.0 0.0 784.8596508048034 0.5239893416332245" id="543" type="z-cone"/>
+    <surface coeffs="784.8596508048034" id="544" type="z-plane"/>
+    <surface coeffs="0.0 0.0 239.1644875273501 59.43266055068984" id="545" type="z-cone"/>
+    <surface coeffs="239.1644875273501" id="546" type="z-plane"/>
+    <surface coeffs="0.0 0.0 264.1135972212963" id="547" type="z-cylinder"/>
+    <surface coeffs="0.0 0.0 4127.448807932677 0.004035501989302651" id="548" type="z-cone"/>
+    <surface coeffs="4127.448807932677" id="549" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -516.1069827102045 1.4817521646138372" id="550" type="z-cone"/>
+    <surface coeffs="-516.1069827102045" id="551" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -379.9841731195929 3.9441844475849903" id="552" type="z-cone"/>
+    <surface coeffs="-379.9841731195929" id="553" type="z-plane"/>
+    <surface coeffs="0.0 0.0 516.1069827102044 1.481752164613838" id="554" type="z-cone"/>
+    <surface coeffs="516.1069827102044" id="555" type="z-plane"/>
+    <surface coeffs="0.0 0.0 379.9841731195934 3.944184447584973" id="556" type="z-cone"/>
+    <surface coeffs="379.9841731195934" id="557" type="z-plane"/>
+    <surface coeffs="0.0 0.0 880.5544433771166 0.0325786518746638" id="558" type="z-cone"/>
+    <surface coeffs="880.5544433771166" id="559" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -172.37834835371387 3.1842709620084637" id="560" type="z-cone"/>
+    <surface coeffs="-172.37834835371387" id="561" type="z-plane"/>
+    <surface coeffs="0.0 0.0 173.90416543979956 0.2367694185351753" id="562" type="z-cone"/>
+    <surface coeffs="173.90416543979956" id="563" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -2535.3585500331865 0.05980047136614878" id="564" type="z-cone"/>
+    <surface coeffs="-2535.3585500331865" id="565" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -927.4587615549689 0.5239893416332272" id="566" type="z-cone"/>
+    <surface coeffs="-927.4587615549689" id="567" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -633.6857499143159 1.4817521646138392" id="568" type="z-cone"/>
+    <surface coeffs="-633.6857499143159" id="569" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -2791.123396523 0.004035501989302786" id="570" type="z-cone"/>
+    <surface coeffs="-2791.123396523" id="571" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -880.5544433771136 0.032578651874664" id="572" type="z-cone"/>
+    <surface coeffs="-880.5544433771136" id="573" type="z-plane"/>
+    <surface coeffs="0.0 0.0 172.37834835371422 3.184270962008477" id="574" type="z-cone"/>
+    <surface coeffs="172.37834835371422" id="575" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -173.9041654397994 0.23676941853517552" id="576" type="z-cone"/>
+    <surface coeffs="-173.9041654397994" id="577" type="z-plane"/>
+    <surface coeffs="0.0 0.0 2535.358550033184 0.0598004713661489" id="578" type="z-cone"/>
+    <surface coeffs="2535.358550033184" id="579" type="z-plane"/>
+    <surface coeffs="0.0 0.0 927.4587615549707 0.5239893416332249" id="580" type="z-cone"/>
+    <surface coeffs="927.4587615549707" id="581" type="z-plane"/>
+    <surface coeffs="0.0 0.0 633.6857499143157 1.4817521646138412" id="582" type="z-cone"/>
+    <surface coeffs="633.6857499143157" id="583" type="z-plane"/>
+    <surface coeffs="0.0 0.0 180.75826157237654" id="584" type="z-cylinder"/>
+    <surface coeffs="0.0 0.0 2791.1233965230126 0.00403550198930275" id="585" type="z-cone"/>
+    <surface coeffs="2791.1233965230126" id="586" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -365.09648158936886 59.43266055069188" id="587" type="z-cone"/>
+    <surface coeffs="-365.09648158936886" id="588" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -495.3380178914811 3.944184447584975" id="589" type="z-cone"/>
+    <surface coeffs="-495.3380178914811" id="590" type="z-plane"/>
+    <surface coeffs="0.0 0.0 365.0964815893694 59.432660550690464" id="591" type="z-cone"/>
+    <surface coeffs="365.0964815893694" id="592" type="z-plane"/>
+    <surface coeffs="0.0 0.0 495.3380178914816 3.9441844475849557" id="593" type="z-cone"/>
+    <surface coeffs="495.3380178914816" id="594" type="z-plane"/>
+    <surface coeffs="0.0 0.0 863.664963662289 0.03257865187466379" id="632" type="z-cone"/>
+    <surface coeffs="863.664963662289" id="633" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -175.8173006122677 3.1842709620084637" id="634" type="z-cone"/>
+    <surface coeffs="-175.8173006122677" id="635" type="z-plane"/>
+    <surface coeffs="0.0 0.0 167.0476600790558 0.23676941853517547" id="636" type="z-cone"/>
+    <surface coeffs="167.0476600790558" id="637" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -2547.9879002120024 0.05980047136614891" id="638" type="z-cone"/>
+    <surface coeffs="-2547.9879002120024" id="639" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -932.5750025465679 0.5239893416332264" id="640" type="z-cone"/>
+    <surface coeffs="-932.5750025465679" id="641" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -637.5682607298512 1.4817521646138392" id="642" type="z-cone"/>
+    <surface coeffs="-637.5682607298512" id="643" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -2743.803149120221 0.004035501989302798" id="644" type="z-cone"/>
+    <surface coeffs="-2743.803149120221" id="645" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -863.6649636622859 0.03257865187466399" id="646" type="z-cone"/>
+    <surface coeffs="-863.6649636622859" id="647" type="z-plane"/>
+    <surface coeffs="0.0 0.0 175.8173006122681 3.1842709620084775" id="648" type="z-cone"/>
+    <surface coeffs="175.8173006122681" id="649" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -167.0476600790556 0.2367694185351757" id="650" type="z-cone"/>
+    <surface coeffs="-167.0476600790556" id="651" type="z-plane"/>
+    <surface coeffs="0.0 0.0 2547.987900212 0.05980047136614901" id="652" type="z-cone"/>
+    <surface coeffs="2547.987900212" id="653" type="z-plane"/>
+    <surface coeffs="0.0 0.0 932.5750025465695 0.5239893416332243" id="654" type="z-cone"/>
+    <surface coeffs="932.5750025465695" id="655" type="z-plane"/>
+    <surface coeffs="0.0 0.0 637.5682607298509 1.4817521646138414" id="656" type="z-cone"/>
+    <surface coeffs="637.5682607298509" id="657" type="z-plane"/>
+    <surface coeffs="0.0 0.0 177.75826157237654" id="658" type="z-cylinder"/>
+    <surface coeffs="0.0 0.0 2743.8031491202332 0.0040355019893027625" id="659" type="z-cone"/>
+    <surface coeffs="2743.8031491202332" id="660" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -368.1216149563572 59.43266055069215" id="661" type="z-cone"/>
+    <surface coeffs="-368.1216149563572" id="662" type="z-plane"/>
+    <surface coeffs="0.0 0.0 -498.6968630126013 3.9441844475849765" id="663" type="z-cone"/>
+    <surface coeffs="-498.6968630126013" id="664" type="z-plane"/>
+    <surface coeffs="0.0 0.0 368.1216149563577 59.432660550690805" id="665" type="z-cone"/>
+    <surface coeffs="368.1216149563577" id="666" type="z-plane"/>
+    <surface coeffs="0.0 0.0 498.6968630126018 3.944184447584958" id="667" type="z-cone"/>
+    <surface coeffs="498.6968630126018" id="668" type="z-plane"/>
+  </geometry>
+  <settings>
+    <run_mode>fixed source</run_mode>
+    <particles>100000</particles>
+    <batches>10</batches>
+    <inactive>1</inactive>
+    <source particle="neutron" strength="1.0" type="independent">
+      <space origin="0.0 0.0 0.0" type="cylindrical">
+        <r type="discrete">
+          <parameters>400.0 1.0</parameters>
+        </r>
+        <phi parameters="-0.17453292519943295 0.17453292519943295" type="uniform"/>
+        <z type="discrete">
+          <parameters>0.0 1.0</parameters>
+        </z>
+      </space>
+      <energy type="discrete">
+        <parameters>14100000.0 1.0</parameters>
+      </energy>
+    </source>
+    <photon_transport>true</photon_transport>
+  </settings>
+  <tallies>
+    <mesh id="2" type="cylindrical">
+      <r_grid>0.0 1.001615508885299 2.003231017770598 3.004846526655897 4.006462035541196 5.008077544426495 6.009693053311794 7.011308562197092 8.012924071082391 9.01453957996769 10.01615508885299 11.017770597738288 12.019386106623587 13.021001615508887 14.022617124394184 15.024232633279484 16.025848142164783 17.02746365105008 18.02907915993538 19.03069466882068 20.03231017770598 21.033925686591278 22.035541195476576 23.037156704361877 24.038772213247174 25.040387722132472 26.042003231017773 27.04361873990307 28.04523424878837 29.04684975767367 30.048465266558967 31.05008077544427 32.051696284329566 33.05331179321487 34.05492730210016 35.05654281098546 36.05815831987076 37.05977382875606 38.06138933764136 39.06300484652666 40.06462035541196 41.066235864297255 42.067851373182556 43.06946688206786 44.07108239095315 45.07269789983845 46.074313408723754 47.07592891760905 48.07754442649435 49.07915993537965 50.080775444264944 51.082390953150245 52.084006462035546 53.08562197092084 54.08723747980614 55.08885298869144 56.09046849757674 57.09208400646204 58.09369951534734 59.09531502423264 60.096930533117934 61.098546042003235 62.10016155088854 63.10177705977383 64.10339256865913 65.10500807754443 66.10662358642973 67.10823909531503 68.10985460420032 69.11147011308563 70.11308562197092 71.11470113085622 72.11631663974153 73.11793214862682 74.11954765751211 75.12116316639742 76.12277867528272 77.12439418416801 78.12600969305332 79.12762520193861 80.12924071082392 81.13085621970922 82.13247172859451 83.13408723747982 84.13570274636511 85.1373182552504 86.13893376413571 87.14054927302101 88.1421647819063 89.14378029079161 90.1453957996769 91.1470113085622 92.14862681744751 93.1502423263328 94.1518578352181 95.1534733441034 96.1550888529887 97.15670436187399 98.1583198707593 99.1599353796446 100.16155088852989 101.1631663974152 102.16478190630049 103.16639741518578 104.16801292407109 105.16962843295639 106.17124394184168 107.17285945072699 108.17447495961228 109.17609046849758 110.17770597738289 111.17932148626818 112.18093699515347 113.18255250403878 114.18416801292408 115.18578352180938 116.18739903069468 117.18901453957997 118.19063004846528 119.19224555735057 120.19386106623587 121.19547657512118 122.19709208400647 123.19870759289176 124.20032310177707 125.20193861066237 126.20355411954766 127.20516962843297 128.20678513731826 129.20840064620356 130.21001615508885 131.21163166397417 132.21324717285947 133.21486268174476 134.21647819063006 135.21809369951535 136.21970920840064 137.22132471728597 138.22294022617126 139.22455573505655 140.22617124394185 141.22778675282714 142.22940226171244 143.23101777059776 144.23263327948305 145.23424878836835 146.23586429725364 147.23747980613894 148.23909531502423 149.24071082390955 150.24232633279485 151.24394184168014 152.24555735056543 153.24717285945073 154.24878836833602 155.25040387722134 156.25201938610664 157.25363489499193 158.25525040387723 159.25686591276252 160.25848142164784 161.26009693053314 162.26171243941843 163.26332794830373 164.26494345718902 165.2665589660743 166.26817447495964 167.26978998384493 168.27140549273022 169.27302100161552 170.2746365105008 171.2762520193861 172.27786752827143 173.27948303715672 174.28109854604202 175.2827140549273 176.2843295638126 177.2859450726979 178.28756058158322 179.28917609046852 180.2907915993538 181.2924071082391 182.2940226171244 183.2956381260097 184.29725363489501 185.2988691437803 186.3004846526656 187.3021001615509 188.3037156704362 189.30533117932148 190.3069466882068 191.3085621970921 192.3101777059774 193.3117932148627 194.31340872374798 195.3150242326333 196.3166397415186 197.3182552504039 198.3198707592892 199.32148626817448 200.32310177705978 201.3247172859451 202.3263327948304 203.3279483037157 204.32956381260098 205.33117932148627 206.33279483037157 207.3344103392569 208.33602584814219 209.33764135702748 210.33925686591277 211.34087237479807 212.34248788368336 213.34410339256868 214.34571890145398 215.34733441033927 216.34894991922457 217.35056542810986 218.35218093699515 219.35379644588048 220.35541195476577 221.35702746365106 222.35864297253636 223.36025848142165 224.36187399030695 225.36348949919227 226.36510500807756 227.36672051696286 228.36833602584815 229.36995153473345 230.37156704361877 231.37318255250406 232.37479806138936 233.37641357027465 234.37802907915994 235.37964458804524 236.38126009693056 237.38287560581585 238.38449111470115 239.38610662358644 240.38772213247174 241.38933764135703 242.39095315024235 243.39256865912765 244.39418416801294 245.39579967689824 246.39741518578353 247.39903069466882 248.40064620355415 249.40226171243944 250.40387722132473 251.40549273021003 252.40710823909532 253.40872374798062 254.41033925686594 255.41195476575123 256.4135702746365 257.41518578352185 258.4168012924071 259.41841680129244 260.4200323101777 261.421647819063 262.42326332794835 263.4248788368336 264.42649434571894 265.4281098546042 266.4297253634895 267.4313408723748 268.4329563812601 269.43457189014543 270.4361873990307 271.437802907916 272.4394184168013 273.4410339256866 274.44264943457193 275.4442649434572 276.4458804523425 277.4474959612278 278.4491114701131 279.4507269789984 280.4523424878837 281.453957996769 282.4555735056543 283.4571890145396 284.4588045234249 285.4604200323102 286.4620355411955 287.4636510500808 288.4652665589661 289.4668820678514 290.4684975767367 291.470113085622 292.4717285945073 293.4733441033926 294.47495961227787 295.4765751211632 296.47819063004846 297.4798061389338 298.4814216478191 299.48303715670437 300.4846526655897 301.48626817447496 302.4878836833603 303.4894991922456 304.49111470113087 305.4927302100162 306.49434571890146 307.4959612277868 308.49757673667204 309.49919224555737 310.5008077544427 311.50242326332796 312.5040387722133 313.50565428109854 314.50726978998387 315.5088852988692 316.51050080775445 317.5121163166398 318.51373182552504 319.51534733441036 320.5169628432957 321.51857835218095 322.5201938610663 323.52180936995154 324.52342487883686 325.52504038772213 326.52665589660745 327.5282714054928 328.52988691437804 329.53150242326336 330.5331179321486 331.53473344103395 332.5363489499193 333.53796445880454 334.53957996768986 335.5411954765751 336.54281098546045 337.5444264943457 338.54604200323104 339.54765751211636 340.5492730210016 341.55088852988695 342.5525040387722 343.55411954765754 344.55573505654286 345.5573505654281 346.55896607431345 347.5605815831987 348.56219709208403 349.5638126009693 350.5654281098546 351.56704361873994 352.5686591276252 353.57027463651053 354.5718901453958 355.5735056542811 356.57512116316644 357.5767366720517 358.57835218093703 359.5799676898223 360.5815831987076 361.58319870759294 362.5848142164782 363.58642972536353 364.5880452342488 365.5896607431341 366.5912762520194 367.5928917609047 368.59450726979003 369.5961227786753 370.5977382875606 371.5993537964459 372.6009693053312 373.6025848142165 374.6042003231018 375.6058158319871 376.6074313408724 377.6090468497577 378.61066235864297 379.6122778675283 380.6138933764136 381.6155088852989 382.6171243941842 383.61873990306947 384.6203554119548 385.6219709208401 386.6235864297254 387.6252019386107 388.62681744749597 389.6284329563813 390.6300484652666 391.6316639741519 392.6332794830372 393.63489499192247 394.6365105008078 395.63812600969305 396.6397415185784 397.6413570274637 398.64297253634896 399.6445880452343 400.64620355411955 401.6478190630049 402.6494345718902 403.65105008077546 404.6526655896608 405.65428109854605 406.6558966074314 407.65751211631664 408.65912762520196 409.6607431340873 410.66235864297255 411.6639741518579 412.66558966074314 413.66720516962846 414.6688206785138 415.67043618739905 416.67205169628437 417.67366720516964 418.67528271405496 419.6768982229403 420.67851373182555 421.68012924071087 422.68174474959613 423.68336025848146 424.6849757673667 425.68659127625205 426.68820678513737 427.68982229402263 428.69143780290796 429.6930533117932 430.69466882067854 431.69628432956387 432.69789983844913 433.69951534733445 434.7011308562197 435.70274636510504 436.7043618739903 437.70597738287563 438.70759289176095 439.7092084006462 440.71082390953154 441.7124394184168 442.71405492730213 443.71567043618745 444.7172859450727 445.71890145395804 446.7205169628433 447.7221324717286 448.7237479806139 449.7253634894992 450.72697899838454 451.7285945072698 452.7302100161551 453.7318255250404 454.7334410339257 455.73505654281104 456.7366720516963 457.7382875605816 458.7399030694669 459.7415185783522 460.74313408723754 461.7447495961228 462.7463651050081 463.7479806138934 464.7495961227787 465.751211631664 466.7528271405493 467.7544426494346 468.7560581583199 469.7576736672052 470.7592891760905 471.7609046849758 472.7625201938611 473.7641357027464 474.7657512116317 475.767366720517 476.7689822294023 477.77059773828756 478.7722132471729 479.7738287560582 480.7754442649435 481.7770597738288 482.77867528271406 483.7802907915994 484.7819063004847 485.78352180937 486.7851373182553 487.78675282714056 488.7883683360259 489.7899838449112 490.79159935379647 491.7932148626818 492.79483037156706 493.7964458804524 494.79806138933765 495.79967689822297 496.8012924071083 497.80290791599356 498.8045234248789 499.80613893376415 500.80775444264947 501.8093699515348 502.81098546042006 503.8126009693054 504.81421647819064 505.81583198707597 506.81744749596123 507.81906300484656 508.8206785137319 509.82229402261714 510.82390953150247 511.82552504038773 512.827140549273 513.8287560581583 514.8303715670437 515.831987075929 516.8336025848142 517.8352180936995 518.8368336025849 519.8384491114701 520.8400646203554 521.8416801292408 522.843295638126 523.8449111470113 524.8465266558967 525.848142164782 526.8497576736672 527.8513731825525 528.8529886914379 529.8546042003231 530.8562197092084 531.8578352180938 532.859450726979 533.8610662358643 534.8626817447496 535.864297253635 536.8659127625202 537.8675282714055 538.8691437802909 539.8707592891761 540.8723747980614 541.8739903069467 542.875605815832 543.8772213247173 544.8788368336026 545.880452342488 546.8820678513732 547.8836833602585 548.8852988691439 549.8869143780291 550.8885298869144 551.8901453957997 552.891760904685 553.8933764135703 554.8949919224556 555.896607431341 556.8982229402262 557.8998384491115 558.9014539579968 559.9030694668821 560.9046849757674 561.9063004846527 562.907915993538 563.9095315024233 564.9111470113086 565.912762520194 566.9143780290792 567.9159935379645 568.9176090468497 569.9192245557351 570.9208400646204 571.9224555735057 572.924071082391 573.9256865912763 574.9273021001616 575.9289176090468 576.9305331179322 577.9321486268175 578.9337641357027 579.9353796445881 580.9369951534734 581.9386106623587 582.940226171244 583.9418416801293 584.9434571890146 585.9450726978998 586.9466882067852 587.9483037156705 588.9499192245557 589.9515347334411 590.9531502423264 591.9547657512117 592.9563812600969 593.9579967689823 594.9596122778676 595.9612277867528 596.9628432956382 597.9644588045235 598.9660743134087 599.967689822294 600.9693053311794 601.9709208400647 602.9725363489499 603.9741518578353 604.9757673667206 605.9773828756058 606.9789983844912 607.9806138933765 608.9822294022617 609.983844911147 610.9854604200324 611.9870759289176 612.9886914378029 613.9903069466883 614.9919224555736 615.9935379644588 616.9951534733441 617.9967689822295 618.9983844911147 620.0</r_grid>
+      <phi_grid>0.0 0.17453292519943295</phi_grid>
+      <z_grid>-10.0 10.0</z_grid>
+      <origin>0.0 0.0 0.0</origin>
+    </mesh>
+    <filter id="4" type="mesh">
+      <bins>2</bins>
+    </filter>
+    <filter id="5" type="cell">
+      <bins>17</bins>
+    </filter>
+    <filter id="6" type="cell">
+      <bins>20</bins>
+    </filter>
+    <tally id="4" name="Mesh Tally">
+      <filters>4</filters>
+      <scores>flux (n,Xt) heating-local absorption</scores>
+    </tally>
+    <tally id="5" name="TBR Channel Tally">
+      <filters>5</filters>
+      <nuclides>Li6 Li7</nuclides>
+      <scores>(n,Xt)</scores>
+    </tally>
+    <tally id="6" name="TBR Blanket Tally">
+      <filters>6</filters>
+      <nuclides>Li6 Li7</nuclides>
+      <scores>(n,Xt)</scores>
+    </tally>
+  </tallies>
+</model>

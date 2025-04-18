@@ -1,0 +1,33 @@
+---------------------------------------
+Begin Slurm Prolog: Apr-18-2025 04:44:43
+Job ID:    2482895
+User ID:   dcox67
+Account:   me
+Job name:  
+Partition: pace-cpu
+QOS:       coe-ice
+---------------------------------------
+
+CondaError: Run 'conda init' before 'conda deactivate'
+
+Obtaining file:///home/hice1/dcox67/skibidi/TBR
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Installing collected packages: arc_2
+  Attempting uninstall: arc_2
+    Found existing installation: arc_2 0.1.0.dev0
+    Uninstalling arc_2-0.1.0.dev0:
+      Successfully uninstalled arc_2-0.1.0.dev0
+  DEPRECATION: Legacy editable install of arc_2==0.1.0.dev0 from file:///home/hice1/dcox67/skibidi/TBR (setup.py develop) is deprecated. pip 25.1 will enforce this behaviour change. A possible replacement is to add a pyproject.toml or enable --use-pep517, and use setuptools >= 64. If the resulting installation is not behaving as expected, try using --config-settings editable_mode=compat. Please consult the setuptools documentation for more information. Discussion can be found at https://github.com/pypa/pip/issues/11457
+  Running setup.py develop for arc_2
+Successfully installed arc_2-0.1.0.dev0
+64
+  File "/home/hice1/dcox67/skibidi/TBR/scripts/backup_arc-standard.py", line 135
+    sigma_t = .macroscopic_total_xs(energyeet)
+              ^
+SyntaxError: invalid syntax
+  File "/home/hice1/dcox67/skibidi/TBR/scripts/backup_arc-standard.py", line 135
+    sigma_t = .macroscopic_total_xs(energyeet)
+              ^
+SyntaxError: invalid syntax
+Fri Apr 18 04:44:56 AM EDT 2025
