@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<plots>
+  <plot basis="xz" color_by="cell" filename="geometry_plot" id="1" type="slice">
+    <pixels>7000 8000</pixels>
+    <origin>350 0 0</origin>
+    <width>700 800</width>
+    <color id="1" rgb="64 64 64"/>
+    <color id="2" rgb="64 64 64"/>
+    <color id="3" rgb="191 191 64"/>
+    <color id="4" rgb="191 146 64"/>
+    <color id="6" rgb="191 64 64"/>
+    <color id="7" rgb="64 64 128"/>
+    <color id="9" rgb="176 191 191"/>
+    <color id="10" rgb="64 191 191"/>
+    <color id="11" rgb="191 160 165"/>
+    <color id="12" rgb="64 64 191"/>
+  </plot>
+</plots>
