@@ -196,7 +196,7 @@ def generate_device(Li6_enrichment = 7.5, dopant = "Li4SiO4", dopant_mass = 0, m
     if int(order) == 1:    
         """ PFCs and Vacuum Vessel """
 
-        vv_points = np.loadtxt("/home/hice1/awhitesides3/TBR/data/" + vv_file)
+        vv_points = np.loadtxt("/home/hice1/dcox67/TBR/data/" + vv_file)
 
         pfc_polygon = openmc.model.Polygon(vv_points, basis='rz')
         vv_inner_edge = pfc_polygon.offset(0.3) #other lit says 0.1cm [PFC]
@@ -207,7 +207,7 @@ def generate_device(Li6_enrichment = 7.5, dopant = "Li4SiO4", dopant_mass = 0, m
 
         """ Blanket and Outer Blanket Tank """
 
-        blanket_points = np.loadtxt("/home/hice1/awhitesides3/TBR/data/" + blanket_file)
+        blanket_points = np.loadtxt("/home/hice1/dcox67/TBR/data/" + blanket_file)
 
         blanket_inner = openmc.model.Polygon(blanket_points, basis='rz')
         reflector_outer = blanket_inner.offset(reflector_thickness)
@@ -223,7 +223,7 @@ def generate_device(Li6_enrichment = 7.5, dopant = "Li4SiO4", dopant_mass = 0, m
     elif int(order) == 2:    
         """ PFCs and Vacuum Vessel """
 
-        vv_points = np.loadtxt("/home/hice1/awhitesides3/TBR/data/" + vv_file)
+        vv_points = np.loadtxt("/home/hice1/dcox67/TBR/data/" + vv_file)
 
         pfc_polygon = openmc.model.Polygon(vv_points, basis='rz')
         vv_inner_edge = pfc_polygon.offset(0.3) #other lit says 0.1cm [PFC]
@@ -239,7 +239,7 @@ def generate_device(Li6_enrichment = 7.5, dopant = "Li4SiO4", dopant_mass = 0, m
 
         """ Blanket and Outer Blanket Tank """
 
-        blanket_points = np.loadtxt("/home/hice1/awhitesides3/TBR/data/" + blanket_file)
+        blanket_points = np.loadtxt("/home/hice1/dcox67/TBR/data/" + blanket_file)
 
         blanket_inner = openmc.model.Polygon(blanket_points, basis='rz')
         reflector_outer = blanket_inner.offset(reflector_thickness)
@@ -253,7 +253,7 @@ def generate_device(Li6_enrichment = 7.5, dopant = "Li4SiO4", dopant_mass = 0, m
 
         plasma, pfc, vv, channel, multiplier, tank_inner, gap, multiplier_2, str_3, salt, reflector, tank_outer, outside = regions #[*] #cells
     # Read volume calc file
-    vol_calc_load = openmc.VolumeCalculation.from_hdf5('/home/hice1/awhitesides3/TBR/data/arc-1_volumes.h5')
+    vol_calc_load = openmc.VolumeCalculation.from_hdf5('/home/hice1/dcox67/TBR/data/arc-1_volumes.h5')
     flibe_volume = vol_calc_load.volumes[8].n
     channels_volume = vol_calc_load.volumes[5].n
 

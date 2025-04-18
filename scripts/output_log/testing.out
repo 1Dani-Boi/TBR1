@@ -1,22 +1,25 @@
 ---------------------------------------
-Begin Slurm Prolog: Apr-11-2025 22:52:25
-Job ID:    2444571
-User ID:   awhitesides3
+Begin Slurm Prolog: Apr-17-2025 23:16:56
+Job ID:    2482436
+User ID:   dcox67
 Account:   me
 Job name:  TBR_runs_11
 Partition: pace-cpu
 QOS:       coe-ice
 ---------------------------------------
-Obtaining file:///home/hice1/awhitesides3/TBR/scripts
-ERROR: file:///home/hice1/awhitesides3/TBR/scripts does not appear to be a Python project: neither 'setup.py' nor 'pyproject.toml' found.
-48
-/home/hice1/awhitesides3/.conda/envs/openmc-env/lib/python3.12/site-packages/openmc/source.py:656: FutureWarning: This class is deprecated in favor of 'IndependentSource'
+
+CondaError: Run 'conda init' before 'conda deactivate'
+
+Obtaining file:///home/hice1/dcox67/skibidi/TBR/scripts
+ERROR: file:///home/hice1/dcox67/skibidi/TBR/scripts does not appear to be a Python project: neither 'setup.py' nor 'pyproject.toml' found.
+24
+/home/hice1/dcox67/.conda/envs/openmc-env/lib/python3.12/site-packages/openmc/source.py:656: FutureWarning: This class is deprecated in favor of 'IndependentSource'
   warnings.warn("This class is deprecated in favor of 'IndependentSource'", FutureWarning)
-/home/hice1/awhitesides3/.conda/envs/openmc-env/lib/python3.12/site-packages/openmc/geometry.py:128: UserWarning: remove_surfs kwarg will be deprecated soon, please set the Geometry.merge_surfaces attribute instead.
+/home/hice1/dcox67/.conda/envs/openmc-env/lib/python3.12/site-packages/openmc/geometry.py:128: UserWarning: remove_surfs kwarg will be deprecated soon, please set the Geometry.merge_surfaces attribute instead.
   warnings.warn("remove_surfs kwarg will be deprecated soon, please "
-/home/hice1/awhitesides3/.conda/envs/openmc-env/lib/python3.12/site-packages/openmc/source.py:656: FutureWarning: This class is deprecated in favor of 'IndependentSource'
+/home/hice1/dcox67/.conda/envs/openmc-env/lib/python3.12/site-packages/openmc/source.py:656: FutureWarning: This class is deprecated in favor of 'IndependentSource'
   warnings.warn("This class is deprecated in favor of 'IndependentSource'", FutureWarning)
-/home/hice1/awhitesides3/.conda/envs/openmc-env/lib/python3.12/site-packages/openmc/geometry.py:128: UserWarning: remove_surfs kwarg will be deprecated soon, please set the Geometry.merge_surfaces attribute instead.
+/home/hice1/dcox67/.conda/envs/openmc-env/lib/python3.12/site-packages/openmc/geometry.py:128: UserWarning: remove_surfs kwarg will be deprecated soon, please set the Geometry.merge_surfaces attribute instead.
   warnings.warn("remove_surfs kwarg will be deprecated soon, please "
 0
 7.5
@@ -96,14 +99,13 @@ Material
          License | https://docs.openmc.org/en/latest/license.html
          Version | 0.15.0
         Git SHA1 | 84fb85977f46e162fea8f5a20ea653a3ec62ac24
-       Date/Time | 2025-04-11 22:52:41
+       Date/Time | 2025-04-17 23:17:21
    MPI Processes | 1
-  OpenMP Threads | 48
+  OpenMP Threads | 24
 
- Reading settings XML file...
- Reading materials XML file...
- Reading geometry XML file...
- Reading tallies XML file...
+ Reading model XML file 'model.xml' ...
+ WARNING: Other XML file input(s) are present. These files may be ignored in
+          favor of the model.xml file.
  Preparing distributed cell instances...
  Reading plot XML file...
 
@@ -181,19 +183,39 @@ Material
    cell nuclide   score     mean  std. dev.
 0    17     Li6  (n,Xt) 1.35e-01   2.49e-04
 1    17     Li7  (n,Xt) 1.84e-02   2.33e-05
-[{'dopant mass': np.int64(0), 'tbr_tally_result': np.float64(1.3444849066594968), 'tbr_tally_std_dev': np.float64(0.15557363697768498)}, {'dopant mass': np.int64(50), 'tbr_tally_result': np.float64(1.3438092168774596), 'tbr_tally_std_dev': np.float64(0.15412072107180166)}]
-/home/hice1/awhitesides3/TBR/scripts/shielding_test_2/optimal_case
-Traceback (most recent call last):
-  File "/home/hice1/awhitesides3/TBR/scripts/arc-standard.py", line 236, in <module>
-    os.mkdir(str(sys.argv[11]))
-FileExistsError: [Errno 17] File exists: '/home/hice1/awhitesides3/TBR/scripts/shielding_test_2/optimal_case'
-/home/hice1/awhitesides3/.conda/envs/openmc-env/lib/python3.12/site-packages/openmc/source.py:656: FutureWarning: This class is deprecated in favor of 'IndependentSource'
+[{'dopant mass': np.int64(0), 'tbr_tally_result': np.float64(1.344484906659472), 'tbr_tally_std_dev': np.float64(0.15557363697769216)}, {'dopant mass': np.int64(50), 'tbr_tally_result': np.float64(1.3438092168774884), 'tbr_tally_std_dev': np.float64(0.15412072107175132)}]
+/home/hice1/dcox67/skibidi/TBR/scripts/ratio_optimal
+Moved 'settings.xml' to '/home/hice1/dcox67/skibidi/TBR/scripts/ratio_optimal'
+Moved 'geometry.xml' to '/home/hice1/dcox67/skibidi/TBR/scripts/ratio_optimal'
+Moved 'materials.xml' to '/home/hice1/dcox67/skibidi/TBR/scripts/ratio_optimal'
+Moved 'tallies.xml' to '/home/hice1/dcox67/skibidi/TBR/scripts/ratio_optimal'
+Moved 'model.xml' to '/home/hice1/dcox67/skibidi/TBR/scripts/ratio_optimal'
+Moved 'summary.h5' to '/home/hice1/dcox67/skibidi/TBR/scripts/ratio_optimal'
+Moved 'plots.xml' to '/home/hice1/dcox67/skibidi/TBR/scripts/ratio_optimal'
+Moved 'tallies.out' to '/home/hice1/dcox67/skibidi/TBR/scripts/ratio_optimal'
+Moved '7.5%.csv' to '/home/hice1/dcox67/skibidi/TBR/scripts/ratio_optimal'
+Moved 'BigMesh.csv' to '/home/hice1/dcox67/skibidi/TBR/scripts/ratio_optimal'
+Moved 'flux_all_energy_ranges.png' to '/home/hice1/dcox67/skibidi/TBR/scripts/ratio_optimal'
+Moved 'plotting_ratiomap.py' to '/home/hice1/dcox67/skibidi/TBR/scripts/ratio_optimal'
+Moved 'Ratiomap_Base.png' to '/home/hice1/dcox67/skibidi/TBR/scripts/ratio_optimal'
+Moved 'Ratiomap_Base_fixed.png' to '/home/hice1/dcox67/skibidi/TBR/scripts/ratio_optimal'
+Moved 'Ratiomap.png' to '/home/hice1/dcox67/skibidi/TBR/scripts/ratio_optimal'
+Moved 'BigMesh_Li4SiO4_0.0_beryllium_0.0_lead_0.0_2.0_1.csv' to '/home/hice1/dcox67/skibidi/TBR/scripts/ratio_optimal'
+Moved 'BigMesh_Li4SiO4_0.0_lead_10.0_lead_0.0_2.0_1.csv' to '/home/hice1/dcox67/skibidi/TBR/scripts/ratio_optimal'
+Moved 'geometry_plot.png' to '/home/hice1/dcox67/skibidi/TBR/scripts/ratio_optimal'
+Moved 'statepoint.10.h5' to '/home/hice1/dcox67/skibidi/TBR/scripts/ratio_optimal'
+Moved '0wppm_mesh.csv' to '/home/hice1/dcox67/skibidi/TBR/scripts/ratio_optimal'
+Moved '0wppm.csv' to '/home/hice1/dcox67/skibidi/TBR/scripts/ratio_optimal'
+Moved '50wppm_mesh.csv' to '/home/hice1/dcox67/skibidi/TBR/scripts/ratio_optimal'
+Moved '50wppm.csv' to '/home/hice1/dcox67/skibidi/TBR/scripts/ratio_optimal'
+OpenMC files moved to new directory: /home/hice1/dcox67/skibidi/TBR/scripts/ratio_optimal
+/home/hice1/dcox67/.conda/envs/openmc-env/lib/python3.12/site-packages/openmc/source.py:656: FutureWarning: This class is deprecated in favor of 'IndependentSource'
   warnings.warn("This class is deprecated in favor of 'IndependentSource'", FutureWarning)
-/home/hice1/awhitesides3/.conda/envs/openmc-env/lib/python3.12/site-packages/openmc/geometry.py:128: UserWarning: remove_surfs kwarg will be deprecated soon, please set the Geometry.merge_surfaces attribute instead.
+/home/hice1/dcox67/.conda/envs/openmc-env/lib/python3.12/site-packages/openmc/geometry.py:128: UserWarning: remove_surfs kwarg will be deprecated soon, please set the Geometry.merge_surfaces attribute instead.
   warnings.warn("remove_surfs kwarg will be deprecated soon, please "
-/home/hice1/awhitesides3/.conda/envs/openmc-env/lib/python3.12/site-packages/openmc/source.py:656: FutureWarning: This class is deprecated in favor of 'IndependentSource'
+/home/hice1/dcox67/.conda/envs/openmc-env/lib/python3.12/site-packages/openmc/source.py:656: FutureWarning: This class is deprecated in favor of 'IndependentSource'
   warnings.warn("This class is deprecated in favor of 'IndependentSource'", FutureWarning)
-/home/hice1/awhitesides3/.conda/envs/openmc-env/lib/python3.12/site-packages/openmc/geometry.py:128: UserWarning: remove_surfs kwarg will be deprecated soon, please set the Geometry.merge_surfaces attribute instead.
+/home/hice1/dcox67/.conda/envs/openmc-env/lib/python3.12/site-packages/openmc/geometry.py:128: UserWarning: remove_surfs kwarg will be deprecated soon, please set the Geometry.merge_surfaces attribute instead.
   warnings.warn("remove_surfs kwarg will be deprecated soon, please "
 0
 7.5
@@ -244,6 +266,59 @@ Material
 	Be9            =	1.0          [ao]
 
 0.0
+                                %%%%%%%%%%%%%%%
+                           %%%%%%%%%%%%%%%%%%%%%%%%
+                        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                                    %%%%%%%%%%%%%%%%%%%%%%%%
+                                     %%%%%%%%%%%%%%%%%%%%%%%%
+                 ###############      %%%%%%%%%%%%%%%%%%%%%%%%
+                ##################     %%%%%%%%%%%%%%%%%%%%%%%
+                ###################     %%%%%%%%%%%%%%%%%%%%%%%
+                ####################     %%%%%%%%%%%%%%%%%%%%%%
+                #####################     %%%%%%%%%%%%%%%%%%%%%
+                ######################     %%%%%%%%%%%%%%%%%%%%
+                #######################     %%%%%%%%%%%%%%%%%%
+                 #######################     %%%%%%%%%%%%%%%%%
+                 ######################     %%%%%%%%%%%%%%%%%
+                  ####################     %%%%%%%%%%%%%%%%%
+                    #################     %%%%%%%%%%%%%%%%%
+                     ###############     %%%%%%%%%%%%%%%%
+                       ############     %%%%%%%%%%%%%%%
+                          ########     %%%%%%%%%%%%%%
+                                      %%%%%%%%%%%
+
+                 | The OpenMC Monte Carlo Code
+       Copyright | 2011-2024 MIT, UChicago Argonne LLC, and contributors
+         License | https://docs.openmc.org/en/latest/license.html
+         Version | 0.15.0
+        Git SHA1 | 84fb85977f46e162fea8f5a20ea653a3ec62ac24
+       Date/Time | 2025-04-17 23:22:09
+   MPI Processes | 1
+  OpenMP Threads | 24
+
+ Reading settings XML file...
+ Reading materials XML file...
+ Reading geometry XML file...
+ Reading tallies XML file...
+ Preparing distributed cell instances...
+ Reading plot XML file...
+
+ =======================>     PLOTTING SUMMARY     <========================
+
+Plot ID: 1
+Plot file: geometry_plot.png
+Universe depth: -1
+Plot Type: Slice
+Origin: 350 0 0
+Width:  700  800
+Coloring: Cells
+Basis: XZ
+Pixels: 7000 8000
+
+ Processing plot 1: geometry_plot.png...
    cell nuclide   score     mean  std. dev.
 0    10     Li6  (n,Xt) 9.92e-01   1.02e-03
 1    10     Li7  (n,Xt) 8.71e-02   1.14e-04
@@ -305,22 +380,22 @@ Material
    cell nuclide   score     mean  std. dev.
 0    17     Li6  (n,Xt) 7.72e-02   9.67e-05
 1    17     Li7  (n,Xt) 1.90e-02   2.18e-05
-[{'dopant mass': np.int64(0), 'tbr_tally_result': np.float64(1.1753664873761247), 'tbr_tally_std_dev': np.float64(0.09756751212787952)}, {'dopant mass': np.int64(50), 'tbr_tally_result': np.float64(1.1791149818010274), 'tbr_tally_std_dev': np.float64(0.09746405983960817)}]
-/home/hice1/awhitesides3/TBR/scripts/shielding_test_2/bare_case
+[{'dopant mass': np.int64(0), 'tbr_tally_result': np.float64(1.1753664873761274), 'tbr_tally_std_dev': np.float64(0.09756751212787244)}, {'dopant mass': np.int64(50), 'tbr_tally_result': np.float64(1.179114981800995), 'tbr_tally_std_dev': np.float64(0.09746405983959706)}]
+/home/hice1/awhitesides3/TBR/scripts/ratio_bare
 Traceback (most recent call last):
-  File "/home/hice1/awhitesides3/TBR/scripts/arc-standard.py", line 236, in <module>
+  File "/home/hice1/dcox67/skibidi/TBR/scripts/arc-standard.py", line 236, in <module>
     os.mkdir(str(sys.argv[11]))
-FileExistsError: [Errno 17] File exists: '/home/hice1/awhitesides3/TBR/scripts/shielding_test_2/bare_case'
-Fri Apr 11 10:56:22 PM EDT 2025
+PermissionError: [Errno 13] Permission denied: '/home/hice1/awhitesides3/TBR/scripts/ratio_bare'
+Thu Apr 17 11:24:46 PM EDT 2025
 ---------------------------------------
-Begin Slurm Epilog: Apr-11-2025 22:56:22
-Job ID:        2444571
-User ID:       awhitesides3
+Begin Slurm Epilog: Apr-17-2025 23:24:46
+Job ID:        2482436
+User ID:       dcox67
 Account:       me
 Job name:      TBR_runs_11
-Resources:     cpu=96,mem=96G,node=2
-Rsrc Used:     cput=06:20:48,vmem=0,walltime=00:03:58,mem=1487444K,energy_used=0
+Resources:     cpu=24,mem=24G,node=1
+Rsrc Used:     cput=03:08:48,vmem=0,walltime=00:07:52,mem=1923524K,energy_used=0
 Partition:     pace-cpu
 QOS:           coe-ice
-Nodes:         atl1-1-01-005-3-[1-2]
+Nodes:         atl1-1-01-005-3-1
 ---------------------------------------

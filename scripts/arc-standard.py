@@ -9,7 +9,7 @@ import subprocess
 import pandas as pd
 import shutil
 
-openmc.config["cross_sections"] = '/home/hice1/awhitesides3/endfb-viii.0-hdf5/cross_sections.xml'
+openmc.config["cross_sections"] = '/home/hice1/dcox67/endfb-viii.0-hdf5/cross_sections.xml'
 
 # ==============================================================================
 # Geometry
@@ -234,7 +234,7 @@ def move_files(source_dir, target_dir):
             print(f"Error moving '{filename}': {e}")
 
 os.mkdir(str(sys.argv[11]))
-move_files('/home/hice1/awhitesides3/TBR/scripts', str(sys.argv[11]))
+move_files('/home/hice1/dcox67/skibidi/TBR/scripts', str(sys.argv[11]))
 print("OpenMC files moved to new directory:", str(sys.argv[11]))
 '''
 try:

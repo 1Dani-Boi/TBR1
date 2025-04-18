@@ -1,7 +1,9 @@
-Metadata-Version: 2.1
-Name: arc-2
+Metadata-Version: 2.2
+Name: arc_2
 Version: 0.1.0.dev0
 Summary: OpenMC-based API for studying TBR in fusion liquid immersion blankets
+Dynamic: description
+Dynamic: summary
 
 # This started as a copy of JBall/arc-nonproliferation
 
