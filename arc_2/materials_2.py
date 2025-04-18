@@ -41,6 +41,7 @@ tungsten.depletable = False
 flibe = openmc.Material(name='FLiBe')
 flibe.add_elements_from_formula('F4Li2Be')
 flibe.set_density('g/cm3', 1.94)
+flibe.temperature = 900.0
 
 """ V-4Cr-4Ti """
 vcrti = openmc.Material(name='V-4Cr-4Ti VV')
@@ -63,6 +64,9 @@ vcrti.add_element('Ni',13/1e6,percent_type='wo')
 vcrti.add_element('Cu',4/1e6,percent_type='wo')
 vcrti.add_element('V',1-0.04-0.04-(56+181+103+7+17+0.5+119+280+0.5+80+13+4)/1e6,percent_type='wo')
 vcrti.set_density('g/cm3',6.05) #This density value is sus and needs a good source
+
+vcrti.id = 2020
+print('ON SKIBIDI: ', vcrti)
 
 """ Uranium tetrafluroide """
 uf4 = openmc.Material()

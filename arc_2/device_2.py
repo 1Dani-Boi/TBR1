@@ -57,6 +57,10 @@ class Device(openmc.model.Model):
         settings = openmc.Settings()
         settings.run_mode = 'fixed source'
         self.settings = settings
+        settings.temperature = {
+            'default': 900.0,
+            'method': 'interpolation'  # Ensure interpolation is enabled if needed
+        }
 
     def build(self):
         """
@@ -171,7 +175,11 @@ def generate_device(Li6_enrichment = 7.5, dopant = "Li4SiO4", dopant_mass = 0, m
     if int(order) == 1:    
         """ PFCs and Vacuum Vessel """
 
-        vv_points = np.loadtxt("/home/hice1/awhitesides3/TBR/data/" + vv_file)
+        vv_points = np.loadtxt("/home/hice1/dcox67/TBR/data/" + vv_file)
+
+        r_mid = np.mean(vv_points[:, 0])  # Average of all r values
+        z_mid = np.mean(vv_points[:, 1])  # Average of all z values
+        print(f"Midpoint of Vacuum Vessel (r, z): ({r_mid:.2f}, {z_mid:.2f})")
 
         pfc_polygon = openmc.model.Polygon(vv_points, basis='rz')
         vv_inner_edge = pfc_polygon.offset(0.3) #other lit says 0.1cm [PFC]
@@ -180,12 +188,40 @@ def generate_device(Li6_enrichment = 7.5, dopant = "Li4SiO4", dopant_mass = 0, m
         multiplier_outer = channel_outer.offset(multiplier_thickness) #[*]Be multiplier [Be]
         vv_channel_outer = multiplier_outer.offset(3.0) #Channel shell [STR2]
 
+        vertices_in = vv_channel_inner.points
+        print("channel inner vertices:", vertices_in)
+
+        vertices_out = channel_outer.points
+        print("channel outer vertices:", vertices_out)
+
+        # Make surfaces for surface tally:
+        # pfc_surface = pfc_polygon.boundary  # Original VV surface
+        # vv_inner_surface = vv_inner_edge.boundary
+        # vv_channel_inner_surface = vv_channel_inner.boundary
+        # channel_outer_surface = channel_outer.boundary
+        # multiplier_outer_surface = multiplier_outer.boundary
+        # vv_channel_outer_surface = vv_channel_outer.boundary
+        
+        # surfaces = [
+        #     (pfc_surface, "PFC Surface"),
+        #     (vv_inner_surface, "VV Inner Surface"),
+        #     (vv_channel_inner_surface, "VV Channel Inner Surface"),
+        #     (channel_outer_surface, "Channel Outer Surface"),
+        #     (multiplier_outer_surface, "Multiplier Outer Surface"),
+        #     (vv_channel_outer_surface, "VV Channel Outer Surface")
+        # ]   
+        # print( list(surfaces.values()) )
+        # device.surfaces = surfaces
+
+
         """ Blanket and Outer Blanket Tank """
 
-        blanket_points = np.loadtxt("/home/hice1/awhitesides3/TBR/data/" + blanket_file)
+        blanket_points = np.loadtxt("/home/hice1/dcox67/TBR/data/" + blanket_file)
 
         blanket_inner = openmc.model.Polygon(blanket_points, basis='rz')
         reflector_outer = blanket_inner.offset(reflector_thickness)
+        vertices = reflector_outer.points
+        print("vertices:", vertices)
         # gap = blanket_inner.offset(1.0)
         blanket_outer = reflector_outer.offset(3.0) #Blanket tank outer [FLiBe2] originially offset of 2 from gap
 
@@ -195,8 +231,24 @@ def generate_device(Li6_enrichment = 7.5, dopant = "Li4SiO4", dopant_mass = 0, m
                                         blanket_inner, reflector_outer, blanket_outer]) #[*]
 
         plasma, pfc, vv, channel, multiplier, tank_inner, salt, reflector, tank_outer, outside = regions #[*]
+    
+        # region_dict = {
+        #     "Plasma": plasma,
+        #     "PFC": pfc,
+        #     "VV": vv,
+        #     "Channel": channel,
+        #     "Multiplier": multiplier,
+        #     "Tank Inner": tank_inner,
+        #     "Salt": salt,
+        #     "Reflector": reflector,
+        #     "Tank Outer": tank_outer
+        # }
+        # device.region_dict = region_dict
+    
+    
+    
     # Read volume calc file
-    vol_calc_load = openmc.VolumeCalculation.from_hdf5('/home/hice1/awhitesides3/TBR/data/arc-1_volumes.h5')
+    vol_calc_load = openmc.VolumeCalculation.from_hdf5('/home/hice1/dcox67/TBR/data/arc-1_volumes.h5')
     flibe_volume = vol_calc_load.volumes[8].n
     channels_volume = vol_calc_load.volumes[5].n
 
@@ -228,15 +280,15 @@ def generate_device(Li6_enrichment = 7.5, dopant = "Li4SiO4", dopant_mass = 0, m
     device.doped_flibe_blanket = doped_flibe_blanket
     
     vcrti_VV = vcrti.clone()
-    vcrti.name = "VV"
+    vcrti_VV.name = "VV"
     device.vcrti_VV = vcrti_VV
 
     vcrti_BI = vcrti.clone()
-    vcrti.name = "tank inner"
+    vcrti_BI.name = "tank inner"
     device.vcrti_BI = vcrti_BI
 
     vcrti_BO = vcrti.clone()
-    vcrti.name = "tank outer"
+    vcrti_BO.name = "tank outer"
     device.vcrti_BO = vcrti_BO
 
     device.plasma = openmc.Cell(region=plasma, fill=None, name='plasma')
@@ -255,11 +307,11 @@ def generate_device(Li6_enrichment = 7.5, dopant = "Li4SiO4", dopant_mass = 0, m
     # ==============================================================================
 
     """ Source Definition """
-    source = openmc.Source()
-    source.space = openmc.stats.CylindricalIndependent(openmc.stats.Discrete(400, 1), openmc.stats.Uniform(a=0, b=2*np.pi), openmc.stats.Discrete(0, 1))
-    source.angles = openmc.stats.Isotropic()
-    source.energy = openmc.stats.Discrete([14.1E6], [1.0])
+    # source = openmc.Source()
+    # source.space = openmc.stats.CylindricalIndependent(openmc.stats.Discrete(400, 1), openmc.stats.Uniform(a=0, b=2*np.pi), openmc.stats.Discrete(0, 1))
+    # source.angles = openmc.stats.Isotropic()
+    # source.energy = openmc.stats.Discrete([14.1E6], [1.0])
 
-    device.settings.source = source
+    # device.settings.source = source
 
     return device
