@@ -91,8 +91,13 @@ merged = pd.merge(
     on=['mesh 1 z', 'mesh 1 x', 'energy low [eV]', 'energy high [eV]'],
     suffixes=('_1', '_2')
 )
+
+merged['mesh 1 x'] = merged['mesh 1 x']*7
+merged['mesh 1 z'] = merged['mesh 1 z']*(800/120)
+#print(f'mreged r:{merged['mesh 1 x']}')
 merged['diff'] = ((merged['mean_2'] - merged['mean_1']) / merged['mean_1']) #* 100
-merged.loc[merged['diff'] >= 1, 'diff'] = 0
+merged['std'] =  merged['std. dev._2'] / merged['std. dev._1'] #np.abs( ((merged['std. dev._2'] - merged['std. dev._1']) / merged['std. dev._1']) )
+# merged.loc[merged['diff'] >= 1, 'diff'] = 0
 
 energy_ranges = merged[['energy low [eV]', 'energy high [eV]']].drop_duplicates().values
 #print(repr(energy_ranges))
@@ -100,215 +105,239 @@ energy_ranges = merged[['energy low [eV]', 'energy high [eV]']].drop_duplicates(
 fig, axes = plt.subplots(nrows=1, ncols=3, figsize=(25, 8), dpi=600)  # 1 row, 5 columns
 axes = axes.flatten()  # Ensure it's a flat iterable list
 
-for i, (energy_low, energy_high) in enumerate(energy_ranges):
-    subset = merged[
-        (merged['energy low [eV]'] == energy_low) &
-        (merged['energy high [eV]'] == energy_high)
-    ]
-    grouped = subset.groupby(['mesh 1 z', 'mesh 1 x'])['diff'].mean().unstack()
-    X, Z = np.meshgrid(x_values, z_values)
-    grouped.replace([0, np.inf, -np.inf], np.nan, inplace=True)
-    ax = axes[i]
-    im = ax.pcolormesh(X, Z, grouped.values, shading='auto', cmap='coolwarm')
-    cbar = fig.colorbar(im, ax=ax)
-    cbar.set_label("Flux Ratio")
+unique_z = np.sort(merged['mesh 1 z'].unique())
+middle_z = 60#unique_z[len(unique_z) // 2]  # pick middle z
 
-    # Set axis labels and title
-    ax.set_xlabel("r")
-    ax.set_ylabel("z")
-    ax.set_title(f"{energy_low:.2e} eV - {energy_high:.2e} eV")
+# Step 4: Filter for that z value
+middle_slice = merged[merged['mesh 1 z'] == middle_z]
+middle_slice = middle_slice.sort_values(by='mesh 1 x')
+cleaned = middle_slice.dropna(subset=['diff'])
+filtered = cleaned.loc[cleaned.groupby('mesh 1 x')['diff'].idxmax()]
+plt.figure(figsize=(10, 6), dpi=300)
 
-    # Overlay markers and lines
-    ax.scatter(x_overlay, z_overlay, color='cyan', marker='o', s=5, alpha=0.5)
-    ax.plot(x_overlay, z_overlay, color='cyan', alpha=0.5, linewidth=1, label='PFC')
-
-    ax.scatter(x_inner, z_inner, color='green', marker='o', s=5, alpha=0.5)
-    ax.plot(x_inner, z_inner, color='green', alpha=0.5, linewidth=1, label="Inner Channel")
-
-    ax.scatter(x_outer, z_outer, color='blue', marker='o', s=5, alpha=0.6)
-    ax.plot(x_outer, z_outer, color='blue', alpha=0.6, linewidth=1, label="Outer Channel")
-
-    ax.scatter(x_reflector, z_reflector, color='lime', s=5, alpha=0.3)
-    ax.plot(x_reflector, z_reflector, color='lime', alpha=0.3, linewidth=1, label="Reflector")
-
-    ax.legend(
-        loc='upper center', 
-        bbox_to_anchor=(0.5, -0.15),  # Move below subplot
-        fancybox=True, shadow=True, ncol=2
-    )
-
-
-# Optimize spacing
-plt.subplots_adjust(bottom=0.2)  # Adds space at the bottom for legends
+plt.errorbar(filtered['mesh 1 x'], filtered['diff'], yerr=filtered['std'] , fmt='x', label='Percent difference between cases', color='black', capsize=3, elinewidth=0.5, ecolor='red')
+plt.axvline(523.3, color='red', linestyle='--', label='Channel Inner')
+plt.axvline(620, color='blue', linestyle='--', label='Tank Inner')
+plt.title(" ")
+plt.xlabel("Radial position (cm)")
+plt.ylabel("Difference in flux (%)")
+plt.grid(True)
+plt.legend()
 plt.tight_layout()
+plt.xlim([520, 650])
+plt.ylim([-10, 10])
+plt.savefig("Ratio_vs_x_middle_z.png", dpi=300)
+plt.show()
 
-# Save the figure
-fig.savefig("Ratiomap.png", dpi=600)
+# for i, (energy_low, energy_high) in enumerate(energy_ranges):
+#     subset = merged[
+#         (merged['energy low [eV]'] == energy_low) &
+#         (merged['energy high [eV]'] == energy_high)
+#     ]
+#     grouped = subset.groupby(['mesh 1 z', 'mesh 1 x'])['diff'].mean().unstack()
+#     X, Z = np.meshgrid(x_values, z_values)
+#     grouped.replace([0, np.inf, -np.inf], np.nan, inplace=True)
+#     ax = axes[i]
+#     im = ax.pcolormesh(X, Z, grouped.values, shading='auto', cmap='coolwarm')
+#     cbar = fig.colorbar(im, ax=ax)
+#     cbar.set_label("Flux Ratio")
 
+#     # Set axis labels and title
+#     ax.set_xlabel("r")
+#     ax.set_ylabel("z")
+#     ax.set_title(f"{energy_low:.2e} eV - {energy_high:.2e} eV")
 
-# Individual Plots for verification:
+#     # Overlay markers and lines
+#     ax.scatter(x_overlay, z_overlay, color='cyan', marker='o', s=5, alpha=0.5)
+#     ax.plot(x_overlay, z_overlay, color='cyan', alpha=0.5, linewidth=1, label='PFC')
 
-energy_ranges = df_mesh1[['energy low [eV]', 'energy high [eV]']].drop_duplicates().values
+#     ax.scatter(x_inner, z_inner, color='green', marker='o', s=5, alpha=0.5)
+#     ax.plot(x_inner, z_inner, color='green', alpha=0.5, linewidth=1, label="Inner Channel")
 
-fig, axes = plt.subplots(nrows=1, ncols=3, figsize=(25, 8), dpi=600)  # 1 row, 5 columns
-axes = axes.flatten()  # Ensure it's a flat iterable list
+#     ax.scatter(x_outer, z_outer, color='blue', marker='o', s=5, alpha=0.6)
+#     ax.plot(x_outer, z_outer, color='blue', alpha=0.6, linewidth=1, label="Outer Channel")
 
-for i, (energy_low, energy_high) in enumerate(energy_ranges):
-    subset = df_mesh1[(df_mesh1['energy low [eV]'] == energy_low) & (df_mesh1['energy high [eV]'] == energy_high)]
+#     ax.scatter(x_reflector, z_reflector, color='lime', s=5, alpha=0.3)
+#     ax.plot(x_reflector, z_reflector, color='lime', alpha=0.3, linewidth=1, label="Reflector")
 
-    grouped = subset.groupby(['mesh 1 z', 'mesh 1 x'])['mean'].mean().unstack()
-    if energy_high == 2.00e+07:
-        grouped[grouped >= 0.01] = np.nan
-    X, Z = np.meshgrid(x_values, z_values)
-    grouped.replace([0, np.inf, -np.inf], np.nan, inplace=True)
-    ax = axes[i]
-    #im = ax.pcolormesh(X, Z, grouped.values, shading='auto', cmap='coolwarm')
-    im = ax.pcolormesh(
-        X, Z, grouped.values,
-        shading='auto',
-        cmap='coolwarm',
-        norm=LogNorm(vmin=np.nanmin(grouped.values[grouped.values > 0]), vmax=np.nanmax(grouped.values))
-    )
-    cbar = fig.colorbar(im, ax=ax)
-    cbar.set_label("Flux")
-
-    # Set axis labels and title
-    ax.set_xlabel("r")
-    ax.set_ylabel("z")
-    ax.set_title(f"{energy_low:.2e} eV - {energy_high:.2e} eV")
-
-    # Overlay markers and lines
-    ax.scatter(x_overlay, z_overlay, color='cyan', marker='o', s=5, alpha=0.5)
-    ax.plot(x_overlay, z_overlay, color='cyan', alpha=0.5, linewidth=1, label='PFC')
-
-    ax.scatter(x_inner, z_inner, color='green', marker='o', s=5, alpha=0.5)
-    ax.plot(x_inner, z_inner, color='green', alpha=0.5, linewidth=1, label="Inner Channel")
-
-    ax.scatter(x_outer, z_outer, color='blue', marker='o', s=5, alpha=0.6)
-    ax.plot(x_outer, z_outer, color='blue', alpha=0.6, linewidth=1, label="Outer Channel")
-
-    ax.scatter(x_reflector, z_reflector, color='lime', s=5, alpha=0.3)
-    ax.plot(x_reflector, z_reflector, color='lime', alpha=0.3, linewidth=1, label="Reflector")
-
-    ax.legend(
-        loc='upper center', 
-        bbox_to_anchor=(0.5, -0.15),  # Move below subplot
-        fancybox=True, shadow=True, ncol=2
-    )
+#     ax.legend(
+#         loc='upper center', 
+#         bbox_to_anchor=(0.5, -0.15),  # Move below subplot
+#         fancybox=True, shadow=True, ncol=2
+#     )
 
 
-# Optimize spacing
-plt.subplots_adjust(bottom=0.2)  # Adds space at the bottom for legends
-plt.tight_layout()
+# # Optimize spacing
+# plt.subplots_adjust(bottom=0.2)  # Adds space at the bottom for legends
+# plt.tight_layout()
 
-# Save the figure
-fig.savefig("Base_Case.png", dpi=600)
-
-
+# # Save the figure
+# fig.savefig("Ratiomap.png", dpi=600)
 
 
+# # Individual Plots for verification:
 
-energy_ranges = df_mesh2[['energy low [eV]', 'energy high [eV]']].drop_duplicates().values
+# energy_ranges = df_mesh1[['energy low [eV]', 'energy high [eV]']].drop_duplicates().values
 
-fig, axes = plt.subplots(nrows=1, ncols=3, figsize=(25, 8), dpi=600)  # 1 row, 5 columns
-axes = axes.flatten()  # Ensure it's a flat iterable list
+# fig, axes = plt.subplots(nrows=1, ncols=3, figsize=(25, 8), dpi=600)  # 1 row, 5 columns
+# axes = axes.flatten()  # Ensure it's a flat iterable list
 
-for i, (energy_low, energy_high) in enumerate(energy_ranges):
-    subset = df_mesh2[(df_mesh2['energy low [eV]'] == energy_low) & (df_mesh2['energy high [eV]'] == energy_high)]
+# for i, (energy_low, energy_high) in enumerate(energy_ranges):
+#     subset = df_mesh1[(df_mesh1['energy low [eV]'] == energy_low) & (df_mesh1['energy high [eV]'] == energy_high)]
 
-    grouped = subset.groupby(['mesh 1 z', 'mesh 1 x'])['mean'].mean().unstack()
-    X, Z = np.meshgrid(x_values, z_values)
-    grouped.replace([0, np.inf, -np.inf], np.nan, inplace=True)
-    ax = axes[i]
-    im = ax.pcolormesh(X, Z, grouped.values, shading='auto', cmap='coolwarm')
-    cbar = fig.colorbar(im, ax=ax)
-    cbar.set_label("Flux")
+#     grouped = subset.groupby(['mesh 1 z', 'mesh 1 x'])['mean'].mean().unstack()
+#     if energy_high == 2.00e+07:
+#         grouped[grouped >= 0.01] = np.nan
+#     #X, Z = np.meshgrid(x_values, z_values)
+#     grouped.replace([0, np.inf, -np.inf], np.nan, inplace=True)
+#     #ax = axes[i]
+#     #im = ax.pcolormesh(X, Z, grouped.values, shading='auto', cmap='coolwarm')
+#     # im = ax.pcolormesh(
+#     #     X, Z, grouped.values,
+#     #     shading='auto',
+#     #     cmap='coolwarm',
+#     #     norm=LogNorm(vmin=np.nanmin(grouped.values[grouped.values > 0]), vmax=np.nanmax(grouped.values))
+#     # )
+#     # cbar = fig.colorbar(im, ax=ax)
+#     # cbar.set_label("Flux")
 
-    # Set axis labels and title
-    ax.set_xlabel("r")
-    ax.set_ylabel("z")
-    ax.set_title(f"{energy_low:.2e} eV - {energy_high:.2e} eV")
+#     # Set axis labels and title
+#     ax.set_xlabel("r")
+#     ax.set_ylabel("z")
+#     ax.set_title(f"{energy_low:.2e} eV - {energy_high:.2e} eV")
 
-    # Overlay markers and lines
-    ax.scatter(x_overlay, z_overlay, color='cyan', marker='o', s=5, alpha=0.5)
-    ax.plot(x_overlay, z_overlay, color='cyan', alpha=0.5, linewidth=1, label='PFC')
+#     # Overlay markers and lines
+#     ax.scatter(x_overlay, z_overlay, color='cyan', marker='o', s=5, alpha=0.5)
+#     ax.plot(x_overlay, z_overlay, color='cyan', alpha=0.5, linewidth=1, label='PFC')
 
-    ax.scatter(x_inner, z_inner, color='green', marker='o', s=5, alpha=0.5)
-    ax.plot(x_inner, z_inner, color='green', alpha=0.5, linewidth=1, label="Inner Channel")
+#     ax.scatter(x_inner, z_inner, color='green', marker='o', s=5, alpha=0.5)
+#     ax.plot(x_inner, z_inner, color='green', alpha=0.5, linewidth=1, label="Inner Channel")
 
-    ax.scatter(x_outer, z_outer, color='blue', marker='o', s=5, alpha=0.6)
-    ax.plot(x_outer, z_outer, color='blue', alpha=0.6, linewidth=1, label="Outer Channel")
+#     ax.scatter(x_outer, z_outer, color='blue', marker='o', s=5, alpha=0.6)
+#     ax.plot(x_outer, z_outer, color='blue', alpha=0.6, linewidth=1, label="Outer Channel")
 
-    ax.scatter(x_reflector, z_reflector, color='lime', s=5, alpha=0.3)
-    ax.plot(x_reflector, z_reflector, color='lime', alpha=0.3, linewidth=1, label="Reflector")
+#     ax.scatter(x_reflector, z_reflector, color='lime', s=5, alpha=0.3)
+#     ax.plot(x_reflector, z_reflector, color='lime', alpha=0.3, linewidth=1, label="Reflector")
 
-    ax.legend(
-        loc='upper center', 
-        bbox_to_anchor=(0.5, -0.15),  # Move below subplot
-        fancybox=True, shadow=True, ncol=2
-    )
+#     ax.legend(
+#         loc='upper center', 
+#         bbox_to_anchor=(0.5, -0.15),  # Move below subplot
+#         fancybox=True, shadow=True, ncol=2
+#     )
 
 
-# Optimize spacing
-plt.subplots_adjust(bottom=0.2)  # Adds space at the bottom for legends
-plt.tight_layout()
+# # Optimize spacing
+# plt.subplots_adjust(bottom=0.2)  # Adds space at the bottom for legends
+# plt.tight_layout()
 
-# Save the figure
-fig.savefig("MultDopant_Case.png", dpi=600)
+# # Save the figure
+# fig.savefig("Base_Case.png", dpi=600)
 
 
 
 
-# Uncertainty plot:
 
-energy_ranges = df_mesh1[['energy low [eV]', 'energy high [eV]']].drop_duplicates().values
+# energy_ranges = df_mesh2[['energy low [eV]', 'energy high [eV]']].drop_duplicates().values
 
-fig, axes = plt.subplots(nrows=1, ncols=3, figsize=(25, 8), dpi=600)  # 1 row, 5 columns
-axes = axes.flatten()  # Ensure it's a flat iterable list
+# fig, axes = plt.subplots(nrows=1, ncols=3, figsize=(25, 8), dpi=600)  # 1 row, 5 columns
+# axes = axes.flatten()  # Ensure it's a flat iterable list
 
-for i, (energy_low, energy_high) in enumerate(energy_ranges):
-    subset = df_mesh1[(df_mesh1['energy low [eV]'] == energy_low) & (df_mesh1['energy high [eV]'] == energy_high)]
+# for i, (energy_low, energy_high) in enumerate(energy_ranges):
+#     subset = df_mesh2[(df_mesh2['energy low [eV]'] == energy_low) & (df_mesh2['energy high [eV]'] == energy_high)]
 
-    grouped = subset.groupby(['mesh 1 z', 'mesh 1 x'])['std. dev.'].mean().unstack()
-    groupedmean = subset.groupby(['mesh 1 z', 'mesh 1 x'])['mean'].mean().unstack()
-    percent = (grouped / groupedmean) / 100 
-    X, Z = np.meshgrid(x_values, z_values)
-    grouped.replace([0, np.inf, -np.inf], np.nan, inplace=True)
-    groupedmean.replace([0, np.inf, -np.inf], np.nan, inplace=True)
-    ax = axes[i]
-    im = ax.pcolormesh(X, Z, percent.values, shading='auto', cmap='coolwarm')
-    cbar = fig.colorbar(im, ax=ax)
-    cbar.set_label("Uncertainty (Percentage)")
+#     grouped = subset.groupby(['mesh 1 z', 'mesh 1 x'])['mean'].mean().unstack()
+#     X, Z = np.meshgrid(x_values, z_values)
+#     grouped.replace([0, np.inf, -np.inf], np.nan, inplace=True)
+#     ax = axes[i]
+#     im = ax.pcolormesh(X, Z, grouped.values, shading='auto', cmap='coolwarm')
+#     cbar = fig.colorbar(im, ax=ax)
+#     cbar.set_label("Flux")
 
-    # Set axis labels and title
-    ax.set_xlabel("r")
-    ax.set_ylabel("z")
-    ax.set_title(f"{energy_low:.2e} eV - {energy_high:.2e} eV")
+#     # Set axis labels and title
+#     ax.set_xlabel("r")
+#     ax.set_ylabel("z")
+#     ax.set_title(f"{energy_low:.2e} eV - {energy_high:.2e} eV")
 
-    # Overlay markers and lines
-    ax.scatter(x_overlay, z_overlay, color='cyan', marker='o', s=5, alpha=0.5)
-    ax.plot(x_overlay, z_overlay, color='cyan', alpha=0.5, linewidth=1, label='PFC')
+#     # Overlay markers and lines
+#     ax.scatter(x_overlay, z_overlay, color='cyan', marker='o', s=5, alpha=0.5)
+#     ax.plot(x_overlay, z_overlay, color='cyan', alpha=0.5, linewidth=1, label='PFC')
 
-    ax.scatter(x_inner, z_inner, color='green', marker='o', s=5, alpha=0.5)
-    ax.plot(x_inner, z_inner, color='green', alpha=0.5, linewidth=1, label="Inner Channel")
+#     ax.scatter(x_inner, z_inner, color='green', marker='o', s=5, alpha=0.5)
+#     ax.plot(x_inner, z_inner, color='green', alpha=0.5, linewidth=1, label="Inner Channel")
 
-    ax.scatter(x_outer, z_outer, color='blue', marker='o', s=5, alpha=0.6)
-    ax.plot(x_outer, z_outer, color='blue', alpha=0.6, linewidth=1, label="Outer Channel")
+#     ax.scatter(x_outer, z_outer, color='blue', marker='o', s=5, alpha=0.6)
+#     ax.plot(x_outer, z_outer, color='blue', alpha=0.6, linewidth=1, label="Outer Channel")
 
-    ax.scatter(x_reflector, z_reflector, color='lime', s=5, alpha=0.3)
-    ax.plot(x_reflector, z_reflector, color='lime', alpha=0.3, linewidth=1, label="Reflector")
+#     ax.scatter(x_reflector, z_reflector, color='lime', s=5, alpha=0.3)
+#     ax.plot(x_reflector, z_reflector, color='lime', alpha=0.3, linewidth=1, label="Reflector")
 
-    ax.legend(
-        loc='upper center', 
-        bbox_to_anchor=(0.5, -0.15),  # Move below subplot
-        fancybox=True, shadow=True, ncol=2
-    )
+#     ax.legend(
+#         loc='upper center', 
+#         bbox_to_anchor=(0.5, -0.15),  # Move below subplot
+#         fancybox=True, shadow=True, ncol=2
+#     )
 
 
-# Optimize spacing
-plt.subplots_adjust(bottom=0.2)  # Adds space at the bottom for legends
-plt.tight_layout()
+# # Optimize spacing
+# plt.subplots_adjust(bottom=0.2)  # Adds space at the bottom for legends
+# plt.tight_layout()
 
-# Save the figure
-fig.savefig("Base_Case_Uncertainty_Percentage.png", dpi=600)
+# # Save the figure
+# fig.savefig("MultDopant_Case.png", dpi=600)
+
+
+
+
+# # Uncertainty plot:
+
+# energy_ranges = df_mesh1[['energy low [eV]', 'energy high [eV]']].drop_duplicates().values
+
+# fig, axes = plt.subplots(nrows=1, ncols=3, figsize=(25, 8), dpi=600)  # 1 row, 5 columns
+# axes = axes.flatten()  # Ensure it's a flat iterable list
+
+# for i, (energy_low, energy_high) in enumerate(energy_ranges):
+#     subset = df_mesh1[(df_mesh1['energy low [eV]'] == energy_low) & (df_mesh1['energy high [eV]'] == energy_high)]
+
+#     grouped = subset.groupby(['mesh 1 z', 'mesh 1 x'])['std. dev.'].mean().unstack()
+#     groupedmean = subset.groupby(['mesh 1 z', 'mesh 1 x'])['mean'].mean().unstack()
+#     percent = (grouped / groupedmean) / 100 
+#     X, Z = np.meshgrid(x_values, z_values)
+#     grouped.replace([0, np.inf, -np.inf], np.nan, inplace=True)
+#     groupedmean.replace([0, np.inf, -np.inf], np.nan, inplace=True)
+#     ax = axes[i]
+#     im = ax.pcolormesh(X, Z, percent.values, shading='auto', cmap='coolwarm')
+#     cbar = fig.colorbar(im, ax=ax)
+#     cbar.set_label("Uncertainty (Percentage)")
+
+#     # Set axis labels and title
+#     ax.set_xlabel("r")
+#     ax.set_ylabel("z")
+#     ax.set_title(f"{energy_low:.2e} eV - {energy_high:.2e} eV")
+
+#     # Overlay markers and lines
+#     ax.scatter(x_overlay, z_overlay, color='cyan', marker='o', s=5, alpha=0.5)
+#     ax.plot(x_overlay, z_overlay, color='cyan', alpha=0.5, linewidth=1, label='PFC')
+
+#     ax.scatter(x_inner, z_inner, color='green', marker='o', s=5, alpha=0.5)
+#     ax.plot(x_inner, z_inner, color='green', alpha=0.5, linewidth=1, label="Inner Channel")
+
+#     ax.scatter(x_outer, z_outer, color='blue', marker='o', s=5, alpha=0.6)
+#     ax.plot(x_outer, z_outer, color='blue', alpha=0.6, linewidth=1, label="Outer Channel")
+
+#     ax.scatter(x_reflector, z_reflector, color='lime', s=5, alpha=0.3)
+#     ax.plot(x_reflector, z_reflector, color='lime', alpha=0.3, linewidth=1, label="Reflector")
+
+#     ax.legend(
+#         loc='upper center', 
+#         bbox_to_anchor=(0.5, -0.15),  # Move below subplot
+#         fancybox=True, shadow=True, ncol=2
+#     )
+
+
+# # Optimize spacing
+# plt.subplots_adjust(bottom=0.2)  # Adds space at the bottom for legends
+# plt.tight_layout()
+
+# # Save the figure
+# fig.savefig("Base_Case_Uncertainty_Percentage.png", dpi=600)
 

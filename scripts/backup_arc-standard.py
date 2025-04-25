@@ -104,6 +104,15 @@ def create_arc(Li6_enrichment, dopant, dopant_mass, multiplier_material, multipl
     # tbr_filter6 = openmc.MaterialFilter(device.vcrti_BO)
     # device.add_tally('Tbr Tank Outer Tally ', ['(n,Xt)', 'fission', 'kappa-fission', 'fission-q-prompt', 'fission-q-recoverable', 'heating', 'heating-local'], filters=[tbr_filter6])
     
+    r_grid2 = np.linspace(500, 700, num=100) #[NEW] original: (25, 200, num=25), 0, 600
+    z_grid2 = np.array([-10,10]) #[NEW] original: (-200, 200, num=50), -700, 700
+    mesh2 = openmc.CylindricalMesh(r_grid=r_grid2, z_grid=z_grid2) #[NEW]
+    mesh2.phi_grid = np.array([0, (2 * np.pi)/(18 * 2)])
+    mesh2_filter = openmc.MeshFilter(mesh2)
+
+    #device.add_tally('1D Flux', ['flux'], filters=[mesh2_filter, energy_filter, neutron_particle_filter])
+    device.add_tally('1D Flux', ['flux'], filters=[mesh2_filter, neutron_particle_filter])
+
     # ---------- Dosage: -----------------------------------
     # energies = np.array([1e-5, 1e-3, 1.0, 10.0])  # in MeV
     # dose_factors = np.array([1e-8, 1e-7, 1e-6])   # in Sv cm² (example only)
@@ -131,10 +140,10 @@ def create_arc(Li6_enrichment, dopant, dopant_mass, multiplier_material, multipl
     device.add_tally('Neutron Dose', ['flux'], filters = [n_filter, dose_mesh_filter])
     device.add_tally('Photon Dose', ['flux'], filters = [p_filter, dose_mesh_filter])
 
-    energyeet
-    sigma_t = .macroscopic_total_xs(energyeet)
-    mfp = 1.0 / sigma_t
-    print(f"MFP at {energyeet:.2e} eV: {mfp:.5f} cm")
+    #energyeet = 14e6
+    #sigma_t = mat.tungsten.macroscopic_total_xs(energyeet)
+    #mfp = 1.0 / sigma_t
+    #print(f"MFP of W at {energyeet:.2e} eV: {mfp:.5f} cm")
 
     # ==============================================================================
     # Run
@@ -151,7 +160,7 @@ def create_arc(Li6_enrichment, dopant, dopant_mass, multiplier_material, multipl
     
     # set run parameters
     # device.settings.threads = 24
-    device.settings.particles = int(1e2)
+    device.settings.particles = int(1e6)
     device.settings.batches = 10  
     device.settings.inactive = 1  
 
@@ -200,6 +209,7 @@ def make_materials_geometry_tallies(Li6_enrichment, dopant = str(sys.argv[1]), d
     flux_tally = sp.get_tally(name='Mesh Tally')
     channel_tally = sp.get_tally(name='Channel Flux Spectrum')
     blanket_tally = sp.get_tally(name='Blanket Flux Spectrum')
+    flux_tally_21 = sp.get_tally(name='1D Flux')
     cell_energy_filter = openmc.EnergyFilter.from_group_structure('CCFE-709')
 
     df = tbr_tally.get_pandas_dataframe()
@@ -207,6 +217,7 @@ def make_materials_geometry_tallies(Li6_enrichment, dopant = str(sys.argv[1]), d
     df_mesh = flux_tally.get_pandas_dataframe()
     channel_df = channel_tally.get_pandas_dataframe()
     blanket_df = blanket_tally.get_pandas_dataframe()
+    flux_df = flux_tally_21.get_pandas_dataframe()
 
 
     channel_flux = channel_tally.mean.flatten()
@@ -388,7 +399,42 @@ def make_materials_geometry_tallies(Li6_enrichment, dopant = str(sys.argv[1]), d
     fig.savefig(f"flux_all_energy_ranges_dopant:{float(sys.argv[2])}_mult:{float(sys.argv[6])}_particles:{device.settings.particles}.png", dpi=600)
 
     
+    # =================== EDGE PLOT =================================================================================
 
+
+    flux_df.columns = [' '.join(filter(None, map(str, col))).strip() for col in flux_df.columns] #.columns = [' '.join(col).strip() for col in df_mesh.columns]
+    # flux_df.to_csv(f'Edge_CSV_dopant:{float(sys.argv[2])}.csv')
+    # print(flux_df.columns)
+    #energy_ranges = flux_df[['energy low [eV]', 'energy high [eV]']].drop_duplicates().values
+    plt.figure()
+    # for i, (energy_low, energy_high) in enumerate(energy_ranges):
+    #     subset = flux_df[(flux_df['energy low [eV]'] == energy_low) & (flux_df['energy high [eV]'] == energy_high)]
+    #     #print('subset:' , subset.columns)
+    #     voxel_volume = 2*20*1  # cm^3
+
+    #     flux_std = (subset['std. dev.'] / voxel_volume) * neutrons_per_second
+    #     radial_positions = subset['mesh 2 x']*2-20
+    #     plt.errorbar( radial_positions,  (subset['mean'] / voxel_volume) * neutrons_per_second, label=f'{energy_low:.2e} to {energy_high:.2e} eV' , yerr=flux_std, capsize=3)
+    #     #plt.plot(radial_positions, (subset['mean'] / voxel_volume) * neutrons_per_second, label=f'{energy_low:.2e} to {energy_high:.2e} eV')
+    #     #plt.fill_between(subset['mesh 2 x']*2-20, (subset['mean'] / voxel_volume) * neutrons_per_second - flux_std, (subset['mean'] / voxel_volume) * neutrons_per_second + flux_std, alpha=0.3)
+    print(flux_df.columns)
+    voxel_volume = 2*20*1  # cm^3
+    flux_std = (flux_df['std. dev.'] / voxel_volume) * neutrons_per_second
+    radial_positions = flux_df['mesh 2 x']*2-20
+    plt.errorbar( radial_positions,  (flux_df['mean'] / voxel_volume) * neutrons_per_second, yerr=flux_std, capsize=3)  
+    plt.yscale('log')
+    plt.xlabel('Radial Distance from Blanket Edge (cm)')
+    plt.ylabel('Flux [n/cm^2-s]')
+    plt.title(f'Flux vs X for {energy_low} to {energy_high} eV')
+    plt.grid(True, which='both', ls='--')
+    plt.axvline(x=0, color='red', linestyle='--', linewidth=1, label='PFC')
+    plt.axvline(x=3.3, color='black', linestyle='--', linewidth=1, label='Channel Inner')
+    plt.axvline(x=23.3, color='orange', linestyle='--', linewidth=1, label='Channel Outer')
+    plt.axvline(x=100, color='cyan', linestyle='--', linewidth=1, label='Blanket Outer')
+    plt.legend()
+    plt.xlim(-24, 150)
+    plt.ylim(1e-10,0.4e-5)
+    plt.savefig(f'Flux vs X all energies together for mult:{float(sys.argv[6])}.png')
 
     # DOSE STUFF: ---------------------------------------------------------------------------------------------------------
     tally_n = sp.get_tally(name='Neutron Dose')
@@ -410,6 +456,8 @@ def make_materials_geometry_tallies(Li6_enrichment, dopant = str(sys.argv[1]), d
     # Annual dose
     annual_dose = total_dose_rate * occupancy_seconds
     print(f"Annual dose at point: {annual_dose:.3e} Sv/year")
+
+
 
 
 
